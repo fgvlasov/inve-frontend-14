@@ -1,14 +1,10 @@
 import React, { createContext, useContext, useMemo, useState } from "react";
 import { Toast } from "../Brief/Email/Toast";
-import { GlobalContext } from "pages/_app";
+import { GlobalContext } from "@/app/global-context";
 export const ToastrContext = createContext({});
 
 export const ToastrProvider = ({ children }) => {
-  const {
-    Confirmation_Form_Brief,
-    Confirmation_Form_Phone,
-    Confirmation_Form_Zayavka,
-  } = useContext(GlobalContext);
+  const { Confirmation_Form_Brief, Confirmation_Form_Phone, Confirmation_Form_Zayavka } = useContext(GlobalContext);
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState(Confirmation_Form_Brief);
@@ -22,12 +18,7 @@ export const ToastrProvider = ({ children }) => {
       Confirmation_Form_Phone,
       Confirmation_Form_Zayavka,
     }),
-    [
-      open,
-      Confirmation_Form_Brief,
-      Confirmation_Form_Phone,
-      Confirmation_Form_Zayavka,
-    ]
+    [open, Confirmation_Form_Brief, Confirmation_Form_Phone, Confirmation_Form_Zayavka],
   );
 
   return (

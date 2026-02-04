@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { 
-  Pagination, 
+import {
+  Pagination,
   Thumbs,
-  // Zoom 
-  } from "swiper/modules";
+  // Zoom
+} from "swiper/modules";
 
 // import { ImageZoomModal } from "../ImageZoomModal";
 import Image from "next/image";
 // import "swiper/css";
 
 import { getStrapiURL } from "lib/api";
-// import ModalImage from "@/components/ui/ModalImage";
-// import { getStrapiMedia } from "lib/media";
+// import ModalImage from "@/app/components/ui/ModalImage";
+// import { getStrapiMedia } from "@/app/lib/media";
 
 export function getLink(media) {
   try {
@@ -32,7 +32,7 @@ export const SwiperPhotos = ({ poster, photos, verticalPhotos = false }) => {
   const [openZoom, setOpenZoom] = useState(false);
   const [current, setCurrent] = useState();
   const [showPagination, setShowPagination] = useState(true);
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(false);
   const updatePaginationVisibility = () => {
     setShowPagination(window.innerWidth < 768);
   };
@@ -55,7 +55,7 @@ export const SwiperPhotos = ({ poster, photos, verticalPhotos = false }) => {
         slidesPerView={1}
         spaceBetween={10}
         centeredSlides={true}
-        className="mySwiper"
+        className='mySwiper'
         autoHeight={true}
         loop
         modules={[Thumbs, Pagination]}
@@ -76,16 +76,16 @@ export const SwiperPhotos = ({ poster, photos, verticalPhotos = false }) => {
               setCurrent(photo);
             }}
           >
-            <div className="min-h-[450px] px-4">
-            <Image
-                className="w-full h-full rounded-l15 object-cover"
+            <div className='min-h-[450px] px-4'>
+              <Image
+                className='w-full h-full rounded-l15 object-cover'
                 style={{
                   filter: !loaded ? "blur(70px)" : "none",
                   transition: "filter 0.2s ease-out",
                 }}
                 fill
                 src={getLink(photo)}
-                alt="Project name"
+                alt='Project name'
                 onLoad={() => setLoaded(true)}
               />
             </div>
@@ -102,7 +102,7 @@ export const SwiperPhotos = ({ poster, photos, verticalPhotos = false }) => {
         slidesPerView={1}
         centeredSlides={true}
         spaceBetween={20}
-        className="mySwiper lg:container swiperLarge"
+        className='mySwiper lg:container swiperLarge'
         autoHeight={true}
         loop
         modules={[Thumbs]}
@@ -121,21 +121,21 @@ export const SwiperPhotos = ({ poster, photos, verticalPhotos = false }) => {
             onClick={() => {
               setCurrent(photo);
             }}
-            className="h-[80vh]"
+            className='h-[80vh]'
           >
             <Image
-              className="w-full h-full rounded-l15 object-contain"
+              className='w-full h-full rounded-l15 object-contain'
               src={getLink(photo)}
               fill
-              alt="Project name"
+              alt='Project name'
               style={{
                 filter: !loaded ? "blur(70px)" : "none",
                 transition: "filter 0.2s ease-out",
               }}
               onLoad={() => setLoaded(true)}
-              loading="lazy"
+              loading='lazy'
             />
-            <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+            <div className='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
           </SwiperSlide>
         ))}
       </Swiper>
@@ -144,9 +144,7 @@ export const SwiperPhotos = ({ poster, photos, verticalPhotos = false }) => {
 
   return (
     <>
-      {showPagination
-        ? renderSwiperWithPagination()
-        : renderSwiperWithoutPagination()}
+      {showPagination ? renderSwiperWithPagination() : renderSwiperWithoutPagination()}
 
       {/* {current && (
         <ModalImage isOpen={openZoom} onClose={() => setOpenZoom(false)}>
@@ -167,19 +165,13 @@ export const SwiperPhotos = ({ poster, photos, verticalPhotos = false }) => {
       )} */}
 
       {slides.length > 1 && !showPagination && (
-        <div className="2xl:pt-12 xl:pt-12 lg:pt-7 pt-2 z-5 w-full mx-auto container">
-          <Swiper
-            slidesPerView={"auto"}
-            spaceBetween={20}
-            scrollbar={{ draggable: true }}
-            loop={true}
-            onSwiper={setThumbsSwiper}
-          >
+        <div className='2xl:pt-12 xl:pt-12 lg:pt-7 pt-2 z-5 w-full mx-auto container'>
+          <Swiper slidesPerView={"auto"} spaceBetween={20} scrollbar={{ draggable: true }} loop={true} onSwiper={setThumbsSwiper}>
             {slides.map((photo, index) => (
               <SwiperSlide key={index} style={{ flexShrink: 1 }}>
-                <div className="rounded-lr w-[266px] h-[150px] overflow-hidden">
+                <div className='rounded-lr w-[266px] h-[150px] overflow-hidden'>
                   <Image
-                    className="w-full h-full object-cover"
+                    className='w-full h-full object-cover'
                     width={266}
                     height={150}
                     alt={photo.attributes.name}
@@ -189,7 +181,7 @@ export const SwiperPhotos = ({ poster, photos, verticalPhotos = false }) => {
                       transition: "filter 0.2s ease-out",
                     }}
                     onLoad={() => setLoaded(true)}
-                    loading="lazy"
+                    loading='lazy'
                   />
                 </div>
               </SwiperSlide>

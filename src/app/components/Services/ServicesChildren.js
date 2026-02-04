@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ServiceChildrenItem from "./ServicesChildrenItem";
 import useTranslation from "next-translate/useTranslation";
-import { fetchAPI } from "lib/api";
+import { fetchAPI } from "@/app/lib/api";
 import Loading from "../ui/Loading";
 
 export default function ServicesChildren({ parent }) {
@@ -37,7 +37,7 @@ export default function ServicesChildren({ parent }) {
   }
 
   return (
-    <div className="container">
+    <div className='container'>
       {data[0] &&
         data.map((service, key) => (
           <ServiceChildrenItem

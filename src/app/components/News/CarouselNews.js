@@ -57,12 +57,12 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
-import BlogSlide from "@/components/News/BlogSlide";
+import BlogSlide from "@/app/components/News/BlogSlide";
 import ReactMarkdown from "react-markdown";
 
 export default function CarouselNews({ slides, blog }) {
   return (
-    <div className="pt-12">
+    <div className='pt-12'>
       {slides.data && (
         <Swiper
           loop={true}

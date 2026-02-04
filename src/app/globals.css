@@ -24,3 +24,27 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.divLayout.bg-black .logoSvg {
+  fill: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+.bgBriefCost {
+  background-position: center !important ;
+}
+#test2 {
+  display: flex;
+}
+#video-player {
+  position: absolute;
+  transform: translate(-50%, 0);
+  width: 100%;
+  bottom: 0 !important;
+}

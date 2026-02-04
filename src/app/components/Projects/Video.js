@@ -1,4 +1,4 @@
-import { getStrapiMedia } from "lib/media";
+import { getStrapiMedia } from "@/app/lib/media";
 import { VideoPlayer } from "./VideoPlayer";
 
 export default function Video({ poster, videofile, small = false }) {

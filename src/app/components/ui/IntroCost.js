@@ -2,7 +2,7 @@ import useTranslation from "next-translate/useTranslation";
 import PillowLink from "./PillowLink";
 //import Loading from "./Loading";
 import { useEffect, useState } from "react";
-import { fetchAPI } from "lib/api";
+import { fetchAPI } from "@/app/lib/api";
 
 export default function IntroCost() {
   const { t } = useTranslation("common");
@@ -22,7 +22,7 @@ export default function IntroCost() {
   }, [locale]);
 
   return (
-    <div className="py-6 md:py-5 container">
+    <div className='py-6 md:py-5 container'>
       {data && (
         <div
           className="w-full bg-[url('/image/content/bg-intro-mob.png')] bg-no-repeat bg-cover 
@@ -31,24 +31,19 @@ export default function IntroCost() {
     	md:pb-33 lg:px-21 lg:pt-25 lg:pb-20"
         >
           <h3
-            className="text-4xl tracking-tight md:w-9/12 mb-10
-      lg:text-6xl       lg:mb-7"
+            className='text-4xl tracking-tight md:w-9/12 mb-10
+      lg:text-6xl       lg:mb-7'
           >
             {data.Title}
           </h3>
           <p
-            className="pr-6 w-full mb-auto pb-5 tracking-tighter
+            className='pr-6 w-full mb-auto pb-5 tracking-tighter
       md:text-xl md:max-w-[378px] le md:pr-0 md:w-2/4
-      lg:text-1xl "
+      lg:text-1xl '
           >
             {data.Slogan}
           </p>
-          <PillowLink
-            text={data.ButtonText}
-            link="/brief"
-            variantSvg="darkSvg"
-            variant="white"
-          ></PillowLink>
+          <PillowLink text={data.ButtonText} link='/brief' variantSvg='darkSvg' variant='white'></PillowLink>
         </div>
       )}
     </div>

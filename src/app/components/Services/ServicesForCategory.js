@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ServiceChildrenItem from "./ServicesChildrenItem";
 import useTranslation from "next-translate/useTranslation";
-import { fetchAPI } from "lib/api";
+import { fetchAPI } from "@/app/lib/api";
 import Loading from "../ui/Loading";
 
 export default function ServicesForCategory({ parent }) {
@@ -34,20 +34,20 @@ export default function ServicesForCategory({ parent }) {
   }, [locale, parent]);
 
   if (!data) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   return (
     <div
-      className="container
+      className='container
     md:flex flex-row md:overflow-hidden md:pb-5
 	
-   "
+   '
     >
       {data[0] && (
         <div
-          className="flex flex-col gap-2.5 py-6 md:flex-row md:overflow-hidden 
-	lg:order-3 lg:w-full"
+          className='flex flex-col gap-2.5 py-6 md:flex-row md:overflow-hidden 
+	lg:order-3 lg:w-full'
         >
           {data.map((service, key) => (
             <ServiceChildrenItem
@@ -55,11 +55,7 @@ export default function ServicesForCategory({ parent }) {
               serviceId={parent}
               title={service.attributes.Title}
               pathCategory={service.attributes.category_brief.data.id}
-              pathDirection={
-                service.attributes.direction_brief.data != null
-                  ? service.attributes.direction_brief.data.id
-                  : ""
-              }
+              pathDirection={service.attributes.direction_brief.data != null ? service.attributes.direction_brief.data.id : ""}
               image={service.attributes.Image}
             />
           ))}

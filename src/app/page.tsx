@@ -1,65 +1,155 @@
-import Image from "next/image";
+import Layout from "@/app/components/layout";
+import { fetchAPI } from "@/app/lib/api";
+import ServicesAbout from "@/app/components/Services/ServicesAbout";
+import BlogsBlockList from "@/app/components/Blogs/BlogsBlockList";
+import ServicesListHome from "@/app/components/Services/ServicesListHome";
+import Line from "@/app/components/ui/Line";
+import Wrapper from "@/app/components/ui/Wrapper";
+import ProjectsListForMain from "@/app/components/Projects/ProjectsListForMain";
 
-export default function Home() {
+// ✅ ISR replacement for getStaticProps revalidate: 60
+export const revalidate = 60;
+
+// Adjust if you want another default locale
+const DEFAULT_LOCALE = "ru";
+
+async function getHomeData(locale = DEFAULT_LOCALE) {
+  const [headerRes, contactRes, menuRes, projectsRes, servicesRes, servicesAboutRes, aboutRes, blogRes, globalRes] =
+    await Promise.all([
+      fetchAPI("/navigation/render/2", {
+        fields: ["title", "path"],
+        locale,
+      }),
+      fetchAPI("/contact", {
+        fields: ["Title", "Address", "Phone", "Email", "PhoneLink"],
+        locale,
+        populate: "ContactSocials",
+      }),
+      fetchAPI("/navigation/render/3", {
+        fields: ["title", "path"],
+        locale,
+      }),
+      fetchAPI("/projects", {
+        sort: ["ListPosition:asc"],
+        populate: {
+          Poster: "*",
+          Poster_for_mainPage: "*",
+          tags: "*",
+        },
+        fields: ["title", "slug"],
+        locale,
+        filters: {
+          ShowOnMainPage: true,
+          publishedAt: { ne: null },
+        },
+        publicationState: "live",
+        pagination: {
+          start: 0,
+          limit: 8,
+        },
+      }),
+      fetchAPI("/categories", {
+        populate: ["image"],
+        fields: ["name", "slug", "textPart1", "textPart2"],
+        locale,
+        publicationState: "live",
+        filters: {
+          ShowOnMainPage: true,
+        },
+        pagination: {
+          start: 0,
+          limit: 3,
+        },
+      }),
+      fetchAPI("/categories", {
+        filters: {
+          ShowAsSlide: true,
+        },
+        fields: ["name", "slug"],
+        locale,
+        publicationState: "live",
+        populate: {
+          Slides: {
+            sort: ["SlidePosition:asc"],
+            populate: "*",
+          },
+          imagePresentationLink: "*",
+        },
+      }),
+      fetchAPI("/about", {
+        fields: ["SloganPart1", "SloganPart2"],
+        populate: ["Video"],
+        locale,
+      }),
+      fetchAPI("/blogs", {
+        fields: ["Title", "slug", "Preview"],
+        populate: ["tag", "Image_preview"],
+        locale,
+        publicationState: "live",
+      }),
+      fetchAPI("/global", {
+        populate: ["defaultSeo"],
+        locale,
+      }),
+    ]);
+
+  return {
+    projects: projectsRes?.data ?? [],
+    services: servicesRes?.data ?? [],
+    servicesAbout: servicesAboutRes?.data ?? [],
+    about: aboutRes?.data ?? null,
+    blogs: blogRes?.data ?? [],
+    global: globalRes?.data ?? null,
+    data: contactRes?.data ?? null,
+    menu: menuRes ?? null,
+    headerMenu: headerRes ?? null,
+  };
+}
+
+// ✅ App Router replacement for <Seo /> / next/head
+export async function generateMetadata() {
+  const { global } = await getHomeData(DEFAULT_LOCALE);
+  const defaultSeo = global?.attributes?.defaultSeo;
+
+  return {
+    title: defaultSeo?.metaTitle ?? "Home",
+    description: defaultSeo?.metaDescription ?? "",
+  };
+}
+
+export default async function HomePage() {
+  const { projects, services, servicesAbout, about, blogs, global, data, menu, headerMenu } = await getHomeData(DEFAULT_LOCALE);
+
+  // If you still need the seo object for something else inside Layout/components, keep it:
+  // const seo = {
+  //   metaTitle: global?.attributes?.defaultSeo?.metaTitle,
+  //   metaDescription: global?.attributes?.defaultSeo?.metaDescription,
+  // };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <Layout
+      headerContact={data?.attributes}
+      data={data}
+      menu={menu}
+      header={headerMenu}
+      bg='black'
+      headerBg='black'
+      footerBg='black'
+      pillowColor='dark'
+      variantSvg='darkSvg'
+    >
+      <ServicesAbout about={about} servicesAbout={servicesAbout} />
+      <ServicesListHome services={services} />
+
+      <Wrapper color='grey' position='top'>
+        <ProjectsListForMain projects={projects} moreProjects={true} />
+      </Wrapper>
+
+      <BlogsBlockList articleColor='nero' titleColor='white' buttonColor='white' blogRes={blogs} />
+
+      <div className='container'>
+        <Line variantColor='eclipse' />
+      </div>
+    </Layout>
   );
 }

@@ -1,8 +1,8 @@
-import ServiceItem from "@/components/ui/ServiceItem";
+import ServiceItem from "@/app/components/ui/ServiceItem";
 import useTranslation from "next-translate/useTranslation";
 import Loading from "../ui/Loading";
 import { useEffect, useState } from "react";
-import { fetchAPI } from "lib/api";
+import { fetchAPI } from "@/app/lib/api";
 import BriefCost from "../ui/BriefCost";
 
 export default function ServicesListPage({ services }) {
@@ -14,14 +14,7 @@ export default function ServicesListPage({ services }) {
   useEffect(() => {
     async function fetchData() {
       const serviceRes = await fetchAPI("/categories", {
-        fields: [
-          "name",
-          "slug",
-          "textPart1",
-          "textPart2",
-          "textPart3",
-          "textPart4",
-        ],
+        fields: ["name", "slug", "textPart1", "textPart2", "textPart3", "textPart4"],
         locale: locale,
         populate: ["image"],
         filters: {
@@ -42,16 +35,16 @@ export default function ServicesListPage({ services }) {
 
   return (
     <section
-      className="container pt-10 pb-11
+      className='container pt-10 pb-11
     md:pb-[106px] md:pt-20 
-    lg:pb-34"
+    lg:pb-34'
     >
-      <div className="lg:flex pb-10">
+      <div className='lg:flex pb-10'>
         {services.map((service, i) => (
           <ServiceItem
             key={i}
             title={service.attributes.name}
-            subtitle=""
+            subtitle=''
             link={`${i18n.lang}/services/${service.attributes.slug}`}
             textPart1={service.attributes.textPart1}
             textPart2={service.attributes.textPart2}
@@ -62,10 +55,10 @@ export default function ServicesListPage({ services }) {
           />
         ))}
       </div>
-      <div className="lg:grid grid-cols-3">
+      <div className='lg:grid grid-cols-3'>
         <ServiceItem
           title={data.attributes.name}
-          subtitle=""
+          subtitle=''
           link={`/services/${data.attributes.slug}`}
           textPart1={data.attributes.textPart1}
           textPart2={data.attributes.textPart2}

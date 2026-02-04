@@ -1,22 +1,15 @@
-import React, { useState } from "react";
+"use client";
+import { useState } from "react";
 import Modal from "./Modal";
 //import { FormOrderCall } from "../Forms/FormOrderCall";
 import { FormOrder } from "../Forms/FormOrder";
 
-const darkClasses =
-  "bg-nero text-white hover:text-black hover:bg-white border-none";
-const whiteClasses =
-  "text-black bg-white hover:text-white hover:bg-nero border-none";
+const darkClasses = "bg-nero text-white hover:text-black hover:bg-white border-none";
+const whiteClasses = "text-black bg-white hover:text-white hover:bg-nero border-none";
 const darkClassesSvg = " bg-royal-blue text-white";
-const whiteClassesSvg =
-  "bg-white text-black group-hover:bg-royal-blue group-hover:text-white";
+const whiteClassesSvg = "bg-white text-black group-hover:bg-royal-blue group-hover:text-white";
 
-export function OrderCall({
-  variant = "white",
-  text,
-  variantSvg = "blueSvg",
-  formTitle,
-}) {
+export function OrderCall({ variant = "white", text, variantSvg = "blueSvg", formTitle }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleCloseModal = () => {
     setModalIsOpen(false);
@@ -41,10 +34,10 @@ export function OrderCall({
         >
           <svg className='w-[9px] h-[15px] viewBox="0 0 9 15" rotate-180'>
             <path
-              d="M8.15625 14.1055L1.84046 7.39494L8.15625 0.684416"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              fill="transparent"
+              d='M8.15625 14.1055L1.84046 7.39494L8.15625 0.684416'
+              stroke='currentColor'
+              strokeWidth='1.5'
+              fill='transparent'
             />
           </svg>
         </span>

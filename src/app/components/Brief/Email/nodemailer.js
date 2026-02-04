@@ -1,9 +1,9 @@
-import { fetchAPI } from "lib/api";
+import { fetchAPI } from "@/app/lib/api";
 import { CreateEmail } from "./createEmail";
 var nodemailer = require("nodemailer");
 
 const user = "form@invert.studio";
-const pass = 'JTbtiF9g7pDimERwJdJP'
+const pass = "JTbtiF9g7pDimERwJdJP";
 
 export const transporter = nodemailer.createTransport({
   host: "smtp.mail.ru",
@@ -20,7 +20,7 @@ export const SendMail = async (data) => {
     fields: ["Email_forms"],
   });
   const { formName } = JSON.parse(data);
-  const email = await CreateEmail(data)
+  const email = await CreateEmail(data);
   const result = await transporter.sendMail({
     from: user,
     subject: formName,

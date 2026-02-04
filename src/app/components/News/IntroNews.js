@@ -3,7 +3,7 @@ import TagItemContainer from "../ui/TagItemContainer";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
-import { getStrapiMedia } from "lib/media";
+import { getStrapiMedia } from "@/app/lib/media";
 
 export default function IntroNews({ blog }) {
   const router = useRouter();
@@ -13,37 +13,28 @@ export default function IntroNews({ blog }) {
 
   return (
     <div>
-      <div className="container pt-3">
+      <div className='container pt-3'>
         <TagItemContainer>
           {blog.attributes.tag.data && (
             <TagItemSection
               text={blog.attributes.tag.data?.attributes?.Name}
-              color="white"
-              onClick={() =>
-                onClickLink(blog.attributes.tag.data?.attributes?.slug)
-              }
+              color='white'
+              onClick={() => onClickLink(blog.attributes.tag.data?.attributes?.slug)}
             />
           )}
-          <TagItemSection
-            text="Новости"
-            color="white"
-            onClick={() => onClickLink("news")}
-          />
+          <TagItemSection text='Новости' color='white' onClick={() => onClickLink("news")} />
         </TagItemContainer>
 
-        <div
-          className="pt-[43px] pb-[30px] markDown mx-auto"
-          dangerouslySetInnerHTML={{ __html: blog.attributes.Preview }}
-        />
+        <div className='pt-[43px] pb-[30px] markDown mx-auto' dangerouslySetInnerHTML={{ __html: blog.attributes.Preview }} />
       </div>
       <img
-        className="w-full "
+        className='w-full '
         src={getStrapiMedia(blog.attributes.Poster)}
-        width="1200"
-        height="800"
+        width='1200'
+        height='800'
         alt={blog.attributes.title}
         title={blog.attributes.title}
-        loading="lazy"
+        loading='lazy'
         // quality={100}
       />
     </div>
