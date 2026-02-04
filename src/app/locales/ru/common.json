@@ -1,0 +1,97 @@
+{
+  "mainPage": "Главная",
+  "about": {
+    "aboutPurpose": "наша основная цель",
+    "aboutOpportunities": "наши возможности"
+  },
+  "works": {
+    "title": "Портфолио",
+    "meta_description": "Портфолио все работы"
+  },
+  "contacts": {
+    "address": "адрес офиса",
+    "numbers": "как с нами связаться"
+  },
+  "services": {
+    "mainServices": "Основные услуги",
+    "allServices": "Все услуги",
+    "linkServices": "Услуги",
+    "title": "Услуги"
+  },
+  "services_seo": {
+    "meta_title": "Услуги",
+    "meta_description": "Все услуги компании"
+  },
+  "All_projects": "Все проекты",
+  "All_news": "Все новости",
+  "Blog invert": "Блог invert",
+  "About service": "об услуге",
+  "project": {
+    "about": "О проекте",
+    "task": "Задача",
+    "done": "Что сделали",
+    "customer": "Заказчик",
+    "other_projects": "Другие проекты"
+  },
+  "brief": {
+    "how_much": "Сколько стоит ваш проект?",
+    "order_1": "Заполните форму, и мы подготовим",
+    "order_2": "для вас индивидуальное предложение",
+    "fill": "Заполнить бриф",
+    "title_fill": "Заполнить бриф",
+    "services_list_title": "Заполните бриф"
+  },
+  "footer": {
+    "have_project": "Есть проект?",
+    "let_discuss": "Давайте обсудим!",
+    "order_call": "Заказать звонок"
+  },
+  "seo": {
+    "project": "Проект: "
+  },
+  "confidence_policy": "Политика конфиденциальности",
+  "news": {
+    "company_news": "Новости компании",
+    "title_other_news": "Другие новости"
+  },
+  "sendForm": {
+    "Name": "Имя",
+    "Phone": "Телефон",
+    "Email": "Email",
+    "categories": "Категории",
+    "ProjectName": "Название проекта",
+    "VisualizationObject": "Объект визуализации",
+    "ProjectDates": "Сроки проекта",
+    "ProjectSquare": "Площадь проекта",
+    "ProjectPlans": "Планы проекта",
+    "Company": "Компания",
+    "Agreement": "Согласие",
+    "ProjectType": "Тип проекта",
+    "ProjectResolution": "Разрешение проекта",
+    "ExtraDescription": "Дополнительное описание",
+    "Model3d": "3D модель",
+    "PropertyClass": "Класс объекта",
+    "MapLink": "Ссылка на карту",
+    "Season": "Время года",
+    "HeightPointView": "Вид с высоты",
+    "NightPointView": "Ночной вид",
+    "MorningPointView": "Утренний вид",
+    "RenderingMovie": "Видео визуализация",
+    "ProjectQuantity": "Количество проектов",
+    "RenderOpacity": "Прозрачность визуализации",
+    "RenderNoOpacity": "Без прозрачности",
+    "VideoType": "Тип видео",
+    "FilmType": "Тип фильма",
+    "AdvertisedProduct": "Рекламируемый продукт",
+    "DescriptionProduct": "Описание продукта",
+    "Chronometry": "Хронометраж",
+    "Budget": "Бюджет",
+    "Materials": "Материалы",
+    "ExampleLink": "Ссылка на пример",
+    "AnimationTask": "Задача по анимации",
+    "Scenario": "Сценарий",
+    "ProjectTask": "Задача проекта",
+    "TechnicalRequirements": "Технические требования",
+    "ModelQuantity": "Количество моделей"
+  }
+}

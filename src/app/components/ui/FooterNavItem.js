@@ -1,9 +1,10 @@
-import useTranslation from 'next-translate/useTranslation';
-import Link from 'next/link';
+"use client";
+import useTranslation from "next-translate/useTranslation";
+import Link from "next/link";
 
-export default function FooterNavItem({text, link='#'}) {
-  const i18n=useTranslation();
-  const locale=i18n.lang;
+export default function FooterNavItem({ text, link = "#" }) {
+  const i18n = useTranslation();
+  const locale = i18n.lang;
   return (
     <li
       className='mb-[7px]

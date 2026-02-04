@@ -1,0 +1,98 @@
+{
+  "mainPage": "Main page",
+  "about": {
+    "aboutPurpose": "our main purpose",
+    "aboutOpportunities": "our main opportunities"
+  },
+  "works": {
+    "title": "Portfolio",
+    "meta_description": "All portfolio works"
+  },
+  "contacts": {
+    "address": "office address",
+    "numbers": "how to connect"
+  },
+  "services": {
+    "mainServices": "Main services",
+    "allServices": "All services",
+    "linkServices": "Services",
+    "title": "Services"
+  },
+  "services_seo": {
+    "meta_title": "Services",
+    "meta_description": "All services of company"
+  },
+  "All_news": "All news",
+  "All_projects": "All projects",
+  "Blog invert": "Blog invert",
+  "About service": "about service",
+  "project": {
+	"about": "About:",
+    "task": "Task",
+    "done": "What is done",
+    "customer": "Customer",
+    "other_projects": "Other projects"
+
+  },
+  "brief": {
+    "how_much": "How much cost project?",
+    "order_1": "Fill the form ",
+    "order_2": "and get your individual offer!",
+    "fill": "Fill the brief",
+    "title_fill": "Fill up brief",
+    "services_list_title": "Fill up brief"
+  },
+  "footer": {
+    "have_project": "Have project?",
+    "let_discuss": "Let`s discuss",
+    "order_call": "Order call"
+  },
+  "seo": {
+    "project": "Project: "
+  },
+  "confidence_policy": "Confidence policy",
+  "news": {
+    "company_news": "Company news",
+    "title_other_news": "Other news"
+  },
+  "sendForm": {
+    "Name": "Name",
+    "Phone": "Phone",
+    "Email": "Email",
+    "categories": "Categories",
+    "ProjectName": "Project Name",
+    "VisualizationObject": "Visualization Object",
+    "ProjectDates": "Project Dates",
+    "ProjectSquare": "Project Square",
+    "ProjectPlans": "Project Plans",
+    "Company": "Company",
+    "Agreement": "Agreement",
+    "ProjectType": "Project Type",
+    "ProjectResolution": "Project Resolution",
+    "ExtraDescription": "Extra Description",
+    "Model3d": "3D Model",
+    "PropertyClass": "Property Class",
+    "MapLink": "Map Link",
+    "Season": "Season",
+    "HeightPointView": "Height Point View",
+    "NightPointView": "Night Point View",
+    "MorningPointView": "Morning Point View",
+    "RenderingMovie": "Rendering Movie",
+    "ProjectQuantity": "Project Quantity",
+    "RenderOpacity": "Render Opacity",
+    "RenderNoOpacity": "Render No Opacity",
+    "VideoType": "Video Type",
+    "FilmType": "Film Type",
+    "AdvertisedProduct": "Advertised Product",
+    "DescriptionProduct": "Product Description",
+    "Chronometry": "Chronometry",
+    "Budget": "Budget",
+    "Materials": "Materials",
+    "ExampleLink": "Example Link",
+    "AnimationTask": "Animation Task",
+    "Scenario": "Scenario",
+    "ProjectTask": "Project Task",
+    "TechnicalRequirements": "Technical Requirements",
+    "ModelQuantity": "Model Quantity"
+  }
+}
