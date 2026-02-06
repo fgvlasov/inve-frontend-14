@@ -16,20 +16,10 @@ interface PortfolioSlugViewProps {
   headerMenu: unknown;
 }
 
-export default function PortfolioSlugView({
-  tag,
-  projects,
-  categories,
-  data,
-  menu,
-  headerMenu,
-}: PortfolioSlugViewProps) {
+export default function PortfolioSlugView({ tag, projects, categories, data, menu, headerMenu }: PortfolioSlugViewProps) {
   const { t } = useTranslation("common");
 
-  const breadCrumbsItems = [
-    { title: t("All_projects"), path: "/portfolio" },
-    { title: tag.attributes.Name as string },
-  ];
+  const breadCrumbsItems = [{ title: t("All_projects"), path: "/portfolio" }, { title: tag.attributes.Name as string }];
 
   return (
     <Layout
@@ -37,27 +27,18 @@ export default function PortfolioSlugView({
       menu={menu}
       header={headerMenu}
       headerContact={data.attributes}
-      bg="white"
-      headerBg="white"
-      footerBg="black"
-      pillowColor="dark"
-      variantSvg="darkSvg"
+      bg='white'
+      headerBg='white'
+      footerBg='black'
+      pillowColor='dark'
+      variantSvg='darkSvg'
     >
       <TitleSection text={tag.attributes.Name as string}>
-        <span
-          className="text-4xl tracking-tight
-        md:text-6xl text-blue"
-        >
-          #
-        </span>
+        <span className='text-4xl tracking-tight     md:text-6xl text-blue'>#</span>
       </TitleSection>
-      <Line variantColor="grey" />
+      <Line variantColor='grey' />
       <BreadCrumbs links={breadCrumbsItems} />
-      <ProjectsListPortfolio
-        projects={projects}
-        categories={categories}
-        tag={tag.attributes.Name as string}
-      />
+      <ProjectsListPortfolio projects={projects} categories={categories} tag={tag.attributes.Name as string} />
     </Layout>
   );
 }
