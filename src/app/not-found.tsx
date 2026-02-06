@@ -8,9 +8,7 @@ import { fetchAPI } from "@/lib/api";
 export const revalidate = 3600;
 
 export default async function NotFound() {
-  // Если у тебя есть i18n-сегменты — тут надо брать locale из params.
-  // Пока ставим дефолт:
-  const locale = "en";
+  const locale = "ru";
 
   const [headerRes, contactRes, menuRes] = await Promise.all([
     fetchAPI("/navigation/render/2", {
