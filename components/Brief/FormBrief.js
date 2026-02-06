@@ -10,7 +10,7 @@ import { ToastrContext } from "../Toastr/ToastrProvider";
 import { useEnquiryForm } from "@/lib/useEnquiryForm";
 import { useSearchParams } from "next/navigation";
 
-export default function FormBrief({ categories }) {
+export default function FormBrief({ visobjs, categories }) {
   const checkUser = useEnquiryForm();
   const searchParams = useSearchParams();
   const categoryId = searchParams.get("categoryId");

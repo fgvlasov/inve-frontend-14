@@ -8,11 +8,11 @@ import Line from "@/components/ui/Line";
 import FormBrief from "@/components/Brief/FormBrief";
 
 interface BriefViewProps {
-  categories: unknown[];
-  visobjs: unknown[];
+  categories: [];
+  visobjs: [];
   data: { attributes: Record<string, unknown> };
-  menu: unknown;
-  headerMenu: unknown;
+  menu: [];
+  headerMenu: [];
 }
 
 export default function BriefView({ categories, visobjs, data, menu, headerMenu }: BriefViewProps) {
