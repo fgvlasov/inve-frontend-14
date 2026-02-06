@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "./tailwind.css";
 
 :root {
   --background: #ffffff;
@@ -47,4 +47,11 @@ body {
   transform: translate(-50%, 0);
   width: 100%;
   bottom: 0 !important;
+}
+
+.text-black-russian {
+  color: #1c1d21;
+}
+header.text-black-russian nav ul > li a {
+  color: #1c1d21;
 }

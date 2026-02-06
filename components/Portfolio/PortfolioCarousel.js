@@ -8,7 +8,7 @@ import ProjectItemCarousel from './ProjectItemCarousel';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { getStrapiMedia } from 'lib/media';
+import { getStrapiMedia } from '@/lib/media';
 import useTranslation from 'next-translate/useTranslation';
 import Tag from '../ui/Tag';
 import Loading from '../ui/Loading';

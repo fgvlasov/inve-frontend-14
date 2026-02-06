@@ -1,16 +1,21 @@
-import { Router } from 'next/router'
-import { useCallback, useEffect } from 'react'
-import ym, { YMInitializer } from 'react-yandex-metrika'
+"use client";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useCallback, useEffect } from "react";
+import ym, { YMInitializer } from "react-yandex-metrika";
 
 export const YandexMetrica = ({ children }) => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const hit = useCallback((url) => {
-    ym('hit', url)
-  }, [])
+    ym("hit", url);
+  }, []);
 
   useEffect(() => {
-    hit(window.location.pathname + window.location.search)
-    Router.events.on('routeChangeComplete', (url) => hit(url))
-  }, [hit])
+    const query = searchParams.toString();
+    const url = pathname + (query ? `?${query}` : "");
+    hit(url);
+  }, [pathname, searchParams, hit]);
   return (
     <>
       <YMInitializer

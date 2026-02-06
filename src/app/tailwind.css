@@ -1,0 +1,371 @@
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+
+/* Tailwind v4: кастомные цвета из tailwind.config.js дублируем в @theme, иначе text-*, bg-* не применяются */
+@theme {
+  --color-black-russian: #1c1d21;
+  --color-black-russian2: #27282e;
+  --color-black-russian3: #1f1f20;
+  --color-body-bg: #e9e9e9;
+  --color-baker-chocolate: #593b0f;
+  --color-nero: #232323;
+  --color-nero2: #151515;
+  --color-nero3: rgb(35 35 35 / 0.4);
+  --color-nero4: #181818;
+  --color-whisper: #e9e9e9;
+  --color-royal-blue: #4574ef;
+  --color-blue: #4574ef;
+  --color-link-water: #c9d6df;
+  --color-eclipse: #393939;
+  --color-nobel: #989898;
+  --color-mandy: #f05359;
+  --color-fiord: #52616b;
+}
+
+@layer utilities {
+  .masonry-lg {
+    column-gap: 1.5em;
+    column-count: 2;
+  }
+
+  .break-inside {
+    break-inside: avoid;
+  }
+}
+
+.description {
+  @apply font-interTight text-lg flex flex-col;
+}
+
+.input {
+  @apply w-full pt-[17px] pb-[14px] px-7 bg-nero rounded-lr mb-2.5;
+}
+
+.button-all {
+  @apply uppercase text-xl font-interTight text-black-russian flex items-center justify-center border-1 w-full rounded-lr font-medium py-[7px];
+}
+
+.project-title {
+  @apply text-xl tracking-tight pb-2.5 border-b inline-block mt-7;
+}
+
+.trans-default {
+  @apply duration-100 transition-all ease-in;
+}
+
+.dot-white {
+  @apply bg-black-russian rounded-full w-[4px] h-[4px] mr-[5px];
+}
+
+.dot-black {
+  @apply bg-white rounded-full w-[4px] h-[4px] mr-[5px];
+}
+
+.button-round {
+  @apply rounded-full w-[37px] h-[37px] flex flex-col justify-center items-center text-white;
+}
+
+.container {
+  @apply max-w-[1920px] w-full mx-auto px-3.8;
+}
+
+.transition {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.briefInput {
+  @apply py-3 px-5 w-full border border-link-water rounded-5xl;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.richText {
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  color: #000;
+}
+.richText p {
+  margin-bottom: 15px;
+}
+.richText ul li,
+.markDown ul li {
+  list-style-type: disc;
+}
+
+.richText ol,
+.richText ul,
+.markDown ol,
+.markDown ul {
+  display: block;
+  list-style-type: decimal;
+  margin-block-start: 0.5em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 20px;
+  margin-bottom: 15px;
+}
+
+.markDown p {
+  padding-bottom: 0.75rem;
+  color: #4e4e4e;
+  font-size: 16px;
+  line-height: 18px;
+}
+.markDown p img {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.markDown hr {
+  color: #c7c9c9;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.markDown h1,
+.markDown h2,
+.markDown h3,
+.markDown h4,
+.markDown h5 {
+  padding-bottom: 40px;
+  padding-top: 20px;
+  color: #0c0c0c;
+}
+/*xl:w-1/2*/
+.AboutTitles {
+  font-weight: 700;
+  font-size: 1em;
+}
+
+.markDown h1 {
+  font-size: 36px;
+  line-height: 36px;
+}
+.markDown h2 {
+  font-size: 33px;
+  line-height: 33px;
+}
+.markDown h3 {
+  font-size: 30px;
+  line-height: 30px;
+}
+/*
+.opacityMarkdown p {
+  @apply opacity-70;
+}
+*/
+
+.videoGallery .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+.videoGallery .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+@media (max-width: 320px) {
+  .titleAbout {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+@media (min-width: 321px) and (max-width: 340px) {
+  .titleAbout {
+    font-size: 28px;
+    line-height: 28px;
+  }
+}
+
+@media (min-width: 341px) and (max-width: 360px) {
+  .titleAbout {
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+@media (min-width: 361px) and (max-width: 385px) {
+  .titleAbout {
+    font-size: 32px;
+    line-height: 32px;
+  }
+}
+@media (min-width: 386px) and (max-width: 420px) {
+  .titleAbout {
+    font-size: 36px;
+    line-height: 36px;
+  }
+}
+@media (min-width: 421px) and (max-width: 480px) {
+  .titleAbout {
+    font-size: 40px;
+    line-height: 40px;
+  }
+}
+@media (min-width: 481px) and (max-width: 520px) {
+  .titleAbout {
+    font-size: 46px;
+    line-height: 46px;
+  }
+}
+@media (min-width: 521px) and (max-width: 580px) {
+  .titleAbout {
+    font-size: 50px;
+    line-height: 50px;
+  }
+}
+
+@media (min-width: 581px) and (max-width: 640px) {
+  .titleAbout {
+    font-size: 56px;
+    line-height: 56px;
+  }
+}
+@media (min-width: 641px) and (max-width: 767px) {
+  .titleAbout {
+    font-size: 60px;
+    line-height: 60px;
+  }
+}
+@media (min-width: 768px) {
+  .markDown p {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  .titleAbout {
+    font-size: 64px;
+    line-height: 64px;
+  }
+}
+@media (min-width: 1024px) {
+  .titleAbout {
+    font-size: 90px;
+    line-height: 90px;
+  }
+  a > .container {
+    padding-left: 5.25rem;
+    padding-right: 5.25rem;
+  }
+  .briefInput {
+    max-width: 422px;
+    padding-bottom: 0.95rem;
+    padding-top: 0.95rem;
+  }
+  .container:not(.markDown) {
+    padding-left: 86px;
+    padding-right: 86px;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1060px) {
+  .titleAbout {
+    font-size: 86px;
+    line-height: 86px;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1300px) {
+  .titleAbout {
+    font-size: 66px;
+    line-height: 66px;
+  }
+}
+@media (min-width: 1301px) and (max-width: 1340px) {
+  .titleAbout {
+    font-size: 70px;
+    line-height: 70px;
+  }
+}
+@media (min-width: 1341px) and (max-width: 1380px) {
+  .titleAbout {
+    font-size: 74px;
+    line-height: 74px;
+  }
+}
+@media (min-width: 1381px) and (max-width: 1480px) {
+  .titleAbout {
+    font-size: 80px;
+    line-height: 80px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .contRightFull {
+    padding-right: 0px;
+  }
+  .contRightMargin {
+    margin-right: -1em;
+  }
+}
+@media (max-width: 1279px) {
+  .footerNav {
+    padding-left: 0px !important;
+  }
+}
+@media (min-width: 1280px) {
+  .footerNavBorderBlack {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .footerNavBorderWhite {
+    border-left: 1px solid rgba(31, 31, 32, 0.1);
+    border-right: 1px solid rgba(31, 31, 32, 0.1);
+  }
+}
+.ReactModal__Html--open,
+.ReactModal__Body--open {
+  overflow: hidden !important; /* prevents background page from scrolling when the modal is open */
+}
+
+.ReactModal__Overlay {
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.ReactModal__Content {
+  overflow-y: auto;
+  position: relative;
+}
+.modal-close-btn {
+  cursor: pointer;
+  top: 1.5rem;
+  right: 1.5rem;
+  position: absolute;
+}
+
+
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  opacity: 1;
+  background: rgb(200, 200, 200) !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: rgb(69, 116, 239) !important;
+}
+@media (min-width: 768px) {
+  .swiper-pagination-bullet {
+    display: none !important;
+  }
+}

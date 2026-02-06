@@ -1,4 +1,4 @@
-import { getStrapiMedia } from 'lib/media';
+import { getStrapiMedia } from '@/lib/media';
 
 export default function ServicesChoice({ data }) {
   if (!data) {

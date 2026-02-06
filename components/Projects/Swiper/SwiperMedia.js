@@ -6,7 +6,7 @@ import {
   } from "swiper/modules"
 import Image from "next/image"
 
-import { getStrapiURL } from "lib/api"
+import { getStrapiURL } from "@/lib/api"
 
 export function getLink(media) {
   try {

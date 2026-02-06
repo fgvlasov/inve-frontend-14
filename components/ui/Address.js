@@ -1,3 +1,4 @@
+"use client";
 import AddressTitle from "./AddressTitle";
 import AddressText from "./AddressText";
 import useTranslation from "next-translate/useTranslation";

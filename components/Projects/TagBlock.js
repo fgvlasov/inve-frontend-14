@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import TagItemSection from "../ui/TagItemSection";
 
 export default function TagBlock({ tags = [] }) {

@@ -1,3 +1,4 @@
+"use client";
 import Tag from "@/components/ui/Tag";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import ProjectItemWork from "../ui/ProjectItemWork";

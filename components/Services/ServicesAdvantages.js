@@ -1,4 +1,4 @@
-import { getStrapiMedia } from 'lib/media';
+import { getStrapiMedia } from '@/lib/media';
 import EnumCircle from '../ui/EnumCircle';
 import Line from '../ui/Line';
 

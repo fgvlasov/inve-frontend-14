@@ -1,11 +1,13 @@
 import Layout from "@/components/layout";
-import { fetchAPI } from "../../lib/api";
+import { fetchAPI } from "@/lib/api";
+import { buildMetadata } from "@/lib/metadata";
 import ServicesAbout from "@/components/Services/ServicesAbout";
 import BlogsBlockList from "@/components/Blogs/BlogsBlockList";
 import ServicesListHome from "@/components/Services/ServicesListHome";
 import Line from "@/components/ui/Line";
 import Wrapper from "@/components/ui/Wrapper";
 import ProjectsListForMain from "@/components/Projects/ProjectsListForMain";
+import homeStyles from "./Home.module.css";
 
 // ✅ ISR replacement for getStaticProps revalidate: 60
 export const revalidate = 60;
@@ -106,15 +108,9 @@ async function getHomeData(locale = DEFAULT_LOCALE) {
   };
 }
 
-// ✅ App Router replacement for <Seo /> / next/head
 export async function generateMetadata() {
   const { global } = await getHomeData(DEFAULT_LOCALE);
-  const defaultSeo = global?.attributes?.defaultSeo;
-
-  return {
-    title: defaultSeo?.metaTitle ?? "Home",
-    description: defaultSeo?.metaDescription ?? "",
-  };
+  return buildMetadata(null, global?.attributes ?? undefined);
 }
 
 export default async function HomePage() {
@@ -138,18 +134,20 @@ export default async function HomePage() {
       pillowColor='dark'
       variantSvg='darkSvg'
     >
-      <ServicesAbout about={about} servicesAbout={servicesAbout} />
-      <ServicesListHome services={services} />
+      <main className={homeStyles.main}>
+        <ServicesAbout about={about} servicesAbout={servicesAbout} />
+        <ServicesListHome services={services} />
 
-      <Wrapper color='grey' position='top'>
-        <ProjectsListForMain projects={projects} moreProjects={true} />
-      </Wrapper>
+        <Wrapper color='grey' position='top'>
+          <ProjectsListForMain projects={projects} moreProjects={true} />
+        </Wrapper>
 
-      <BlogsBlockList articleColor='nero' titleColor='white' buttonColor='white' blogRes={blogs} />
+        <BlogsBlockList articleColor='nero' titleColor='white' buttonColor='white' blogRes={blogs} />
 
-      <div className='container'>
-        <Line variantColor='eclipse' />
-      </div>
+        <div className='container'>
+          <Line variantColor='eclipse' />
+        </div>
+      </main>
     </Layout>
   );
 }

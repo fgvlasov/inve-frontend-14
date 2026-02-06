@@ -1,9 +1,9 @@
 import TagsBrief from "./TagsBrief";
-import sendBrief from "lib/sendBrief";
+import sendBrief from "@/lib/sendBrief";
 import Link from "next/link";
 import TagsBriefDirection from "./TagsBriefDirection";
 import { AggregateForm } from "./Forms/AggregateForm";
-import { getCategoryProject } from "lib/getCategoryProject";
+import { getCategoryProject } from "@/lib/getCategoryProject";
 import { useContext, useEffect, useState } from "react";
 import { ToastrContext } from "../Toastr/ToastrProvider";
 import { useEnquiryForm } from "@/lib/useEnquiryForm";

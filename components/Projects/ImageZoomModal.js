@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from "react";
-import { getStrapiURL } from "lib/api";
+import { getStrapiURL } from "@/lib/api";
 import { MapInteractionCSS } from "react-map-interaction";
 import Image from "next/image";
 

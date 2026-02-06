@@ -1,3 +1,4 @@
+"use client";
 import Tag from "@/components/ui/Tag";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import ProjectItemWork from "../ui/ProjectItemWork";
@@ -5,14 +6,15 @@ import ProjectItemImage from "../ui/ProjectItemImage";
 import { getStrapiMedia } from "@/lib/media";
 import useTranslation from "next-translate/useTranslation";
 import TagItemSection from "../ui/TagItemSection";
-import { useRouter } from "next/router";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function ProjectsListPortfolio({ projects, categories, tag = "", slug = "" }) {
   const { t } = useTranslation("common");
   const i18n = useTranslation();
   const locale = i18n.lang;
   const router = useRouter();
-  const { id } = router.query;
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
 
   const handleCategoryClick = (id) => {
     router.push(`/portfolio?id=${id}`);
@@ -26,7 +28,7 @@ export default function ProjectsListPortfolio({ projects, categories, tag = "", 
       return true;
     }
   };
-  const allServicesButtonColor = !router.query.id ? "blue" : "white";
+  const allServicesButtonColor = !searchParams.get("id") ? "blue" : "white";
 
   return (
     <section className='bg-whisper relative z-10 rounded-5xl pb-25 pt-6 md:pt-[60px] text-blackRussian md:pb-12 lg:pt-12 lg:pb-9 lg:rounded-7xl'>

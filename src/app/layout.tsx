@@ -1,11 +1,10 @@
 import "./globals.css";
-import { fetchAPI } from "../../lib/api";
+import { getGlobal } from "@/lib/metadata";
 import Providers from "./providers";
 
-export const revalidate = 60; // optional: ISR for the global fetch
+export const revalidate = 60;
 
 export const metadata = {
-  // basic default; you can also set title/description dynamically below if you want
   icons: {
     icon: "/favicon.ico",
   },
@@ -14,19 +13,8 @@ export const metadata = {
   },
 };
 
-async function getGlobal() {
-  const globalRes = await fetchAPI("/global", {
-    populate: {
-      favicon: "*",
-      defaultSeo: { populate: "*" },
-    },
-  });
-
-  return globalRes?.data ?? null;
-}
-
 export default async function RootLayout({ children }) {
-  const global = await getGlobal(); // ✅ server-side fetch once
+  const global = await getGlobal("ru");
 
   return (
     <html lang='en'>

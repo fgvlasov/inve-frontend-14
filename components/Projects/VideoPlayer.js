@@ -1,4 +1,4 @@
-import { getStrapiURL } from "lib/api";
+import { getStrapiURL } from "@/lib/api";
 import React, { useEffect, useRef, useState } from "react";
 
 export function getLink(media) {

@@ -2,7 +2,7 @@ import TagItemSection from "../ui/TagItemSection";
 import TagItemContainer from "../ui/TagItemContainer";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { getStrapiMedia } from "@/lib/media";
 
 export default function IntroNews({ blog }) {

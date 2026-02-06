@@ -1,3 +1,4 @@
+"use client";
 import Title from "@/components/ui/Title";
 import ServiceItem from "@/components/ui/ServiceItem";
 import PillowLink from "@/components/ui/PillowLink";
@@ -5,7 +6,7 @@ import FormService from "@/components/ui/FormService";
 import useTranslation from "next-translate/useTranslation";
 import { useEffect, useState } from "react";
 import { fetchAPI } from "@/lib/api";
-import Loading from "../ui/Loading";
+import Loading from "@/components/ui/Loading";
 
 export default function ServicesList() {
   const [data, setData] = useState();

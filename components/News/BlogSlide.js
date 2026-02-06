@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { getStrapiMediaCarousel } from "lib/mediaCarousel";
+import { getStrapiMediaCarousel } from "@/lib/mediaCarousel";
 
 export const BlogSlide = ({ photo }) => {
   return (

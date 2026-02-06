@@ -1,4 +1,4 @@
-import { getStrapiMediaCarousel } from "lib/mediaCarousel";
+import { getStrapiMediaCarousel } from "@/lib/mediaCarousel";
 import Image from "next/image";
 import Video from "./Video";
 

@@ -1,7 +1,7 @@
 import IntroDescription from "@/components/ui/IntroDescription";
 import ServicesSlides from "@/components/Services/ServicesSlides";
 
-export default function AboutIntro({ title1, text1, title2, text2 }) {
+export default function AboutIntro({ title1, text1, title2, text2, slides = [] }) {
   return (
     <div
       className='pb-15 lg:flex flex-wrap max-w-[1746px]
@@ -11,7 +11,7 @@ export default function AboutIntro({ title1, text1, title2, text2 }) {
         <IntroDescription title={title1} text={text1} />
       </div>
 
-      <ServicesSlides from='About' />
+      <ServicesSlides slides={slides} from='About' />
 
       <div className='lg:w-1/2 lg:pl-18'>
         <IntroDescription title={title2} text={text2} />

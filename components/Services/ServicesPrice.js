@@ -1,5 +1,5 @@
 import Accordion from '../ui/Accordion';
-import { getStrapiMedia } from 'lib/media';
+import { getStrapiMedia } from '@/lib/media';
 import Line from '../ui/Line';
 
 export default function ServicesPrice({ data }) {

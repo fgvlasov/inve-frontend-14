@@ -1,4 +1,4 @@
-import { getStrapiMediaCarousel } from "lib/mediaCarousel";
+import { getStrapiMediaCarousel } from "@/lib/mediaCarousel";
 import Link from "next/link";
 import React from "react";
 

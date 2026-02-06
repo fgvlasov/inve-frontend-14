@@ -10,7 +10,7 @@ import {
 import Image from "next/image";
 // import "swiper/css";
 
-import { getStrapiURL } from "lib/api";
+import { getStrapiURL } from "@/lib/api";
 // import ModalImage from "@/components/ui/ModalImage";
 // import { getStrapiMedia } from "@/lib/media";
 

@@ -1,7 +1,7 @@
 import setLanguage from "next-translate/setLanguage";
 import RadioButton from "./Radio";
 import Line from "./Line";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/navigation";
 
 export default function Language({ lang }) {
   const router = useRouter();
