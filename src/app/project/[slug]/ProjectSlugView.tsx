@@ -22,7 +22,7 @@ interface ProjectSlugViewProps {
 export default function ProjectSlugView({ project, projectsOther, data, menu, headerMenu }: ProjectSlugViewProps) {
   const { t } = useTranslation("common");
 
-  const tags = ((project.attributes.tags as { data?: unknown[] })?.data || []) as Record<string, unknown>[];
+  const tags: any[] = (project?.attributes?.tags ?? []) as any[];
   const breadCrumbsItems = [{ title: t("works.title"), path: "/portfolio" }, { title: project.attributes.Title as string }];
 
   return (
