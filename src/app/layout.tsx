@@ -1,5 +1,5 @@
 import "./globals.css";
-import { fetchAPI } from "@/app/lib/api";
+import { fetchAPI } from "../../lib/api";
 import Providers from "./providers";
 
 export const revalidate = 60; // optional: ISR for the global fetch

@@ -1,11 +1,11 @@
-import Layout from "@/app/components/layout";
-import { fetchAPI } from "@/app/lib/api";
-import ServicesAbout from "@/app/components/Services/ServicesAbout";
-import BlogsBlockList from "@/app/components/Blogs/BlogsBlockList";
-import ServicesListHome from "@/app/components/Services/ServicesListHome";
-import Line from "@/app/components/ui/Line";
-import Wrapper from "@/app/components/ui/Wrapper";
-import ProjectsListForMain from "@/app/components/Projects/ProjectsListForMain";
+import Layout from "@/components/layout";
+import { fetchAPI } from "../../lib/api";
+import ServicesAbout from "@/components/Services/ServicesAbout";
+import BlogsBlockList from "@/components/Blogs/BlogsBlockList";
+import ServicesListHome from "@/components/Services/ServicesListHome";
+import Line from "@/components/ui/Line";
+import Wrapper from "@/components/ui/Wrapper";
+import ProjectsListForMain from "@/components/Projects/ProjectsListForMain";
 
 // ✅ ISR replacement for getStaticProps revalidate: 60
 export const revalidate = 60;

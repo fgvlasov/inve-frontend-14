@@ -1,9 +1,9 @@
 "use client";
 
 import { GlobalContext } from "./global-context";
-import { ToastrProvider } from "@/app/components/Toastr/ToastrProvider";
+import { ToastrProvider } from "@/components/Toastr/ToastrProvider";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
-import { YandexMetrica } from "@/app/components/YandexMetrica";
+import { YandexMetrica } from "@/components/YandexMetrica";
 
 export default function Providers({ children, global }) {
   // global here is global.attributes from Strapi (or undefined/null)
