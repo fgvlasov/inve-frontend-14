@@ -4,6 +4,7 @@ import Line from "@/components/ui/Line";
 import IntroError from "@/components/ui/IntroError";
 import ServicesSlides from "@/components/Services/ServicesSlides";
 import { fetchAPI } from "@/lib/api";
+import { Suspense } from "react";
 
 export const revalidate = 3600;
 
@@ -31,28 +32,30 @@ export default async function NotFound() {
   const headerMenu = headerRes;
 
   return (
-    <Layout
-      headerContact={data?.attributes}
-      data={data}
-      menu={menu}
-      header={headerMenu}
-      bg='grey'
-      headerBg='black'
-      footerBg='white'
-      pillowColor='grey'
-      variantSvg='darkSvg'
-    >
-      <Wrapper color='black' position='bottom'>
-        <IntroError />
-      </Wrapper>
+    <Suspense fallback={null}>
+      <Layout
+        headerContact={data?.attributes}
+        data={data}
+        menu={menu}
+        header={headerMenu}
+        bg='grey'
+        headerBg='black'
+        footerBg='white'
+        pillowColor='grey'
+        variantSvg='darkSvg'
+      >
+        <Wrapper color='black' position='bottom'>
+          <IntroError />
+        </Wrapper>
 
-      <div className='py-3.8 container contRightFull'>
-        <ServicesSlides />
-      </div>
+        <div className='py-3.8 container contRightFull'>
+          <ServicesSlides />
+        </div>
 
-      <div className='container'>
-        <Line variantColor='grey' />
-      </div>
-    </Layout>
+        <div className='container'>
+          <Line variantColor='grey' />
+        </div>
+      </Layout>
+    </Suspense>
   );
 }
