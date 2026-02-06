@@ -11,22 +11,15 @@ import ServicesSlides from "@/components/Services/ServicesSlides";
 import PortfolioCarousel from "@/components/Portfolio/PortfolioCarousel";
 
 interface ServicesViewProps {
-  services: unknown[];
-  projects: unknown[];
+  services: [];
+  projects: [];
   data: { attributes: Record<string, unknown> };
-  menu: unknown;
-  headerMenu: unknown;
-  slides?: unknown[];
+  menu: [];
+  headerMenu: [];
+  slides?: [];
 }
 
-export default function ServicesView({
-  services,
-  projects,
-  data,
-  menu,
-  headerMenu,
-  slides = [],
-}: ServicesViewProps) {
+export default function ServicesView({ services, projects, data, menu, headerMenu, slides = [] }: ServicesViewProps) {
   const { t } = useTranslation("common");
 
   return (
@@ -35,15 +28,17 @@ export default function ServicesView({
       menu={menu}
       header={headerMenu}
       headerContact={data.attributes}
-      bg="white"
-      headerBg="black"
-      footerBg="white"
-      pillowColor="white"
-      variantSvg="darkSvg"
+      bg='white'
+      headerBg='black'
+      footerBg='white'
+      pillowColor='white'
+      variantSvg='darkSvg'
     >
       <Wrapper>
-        <TitleSection text={t("services.title")} variantColor="white" />
-        <div className="container">
+        <TitleSection text={t("services.title")} variantColor='white'>
+          {" "}
+        </TitleSection>
+        <div className='container'>
           <Line />
         </div>
         <BreadCrumbs
@@ -58,14 +53,14 @@ export default function ServicesView({
         {services && <ServicesListPage services={services} />}
       </Wrapper>
 
-      <div className="container md:pt-15 lg:pt-20">
+      <div className='container md:pt-15 lg:pt-20'>
         <ServicesSlides slides={slides} />
       </div>
 
       {projects && <PortfolioCarousel projects={projects} />}
 
-      <div className="container">
-        <Line variantColor="grey" />
+      <div className='container'>
+        <Line variantColor='grey' />
       </div>
     </Layout>
   );

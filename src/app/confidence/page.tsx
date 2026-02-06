@@ -9,14 +9,9 @@ const DEFAULT_LOCALE = "ru";
 export const revalidate = 3600;
 
 export async function generateMetadata() {
-  const [data, global] = await Promise.all([
-    getConfidenceData(DEFAULT_LOCALE),
-    getGlobal(DEFAULT_LOCALE),
-  ]);
+  const [data, global] = await Promise.all([getConfidenceData(DEFAULT_LOCALE), getGlobal(DEFAULT_LOCALE)]);
   const seo = data.agreement?.attributes?.Seo;
-  const pageSeo = seo
-    ? { metaTitle: seo.metaTitle, metaDescription: seo.metaDescription }
-    : null;
+  const pageSeo = seo ? { metaTitle: seo.metaTitle, metaDescription: seo.metaDescription } : null;
   return buildMetadata(pageSeo, global?.attributes ?? undefined);
 }
 
@@ -59,13 +54,13 @@ export default async function ConfidencePage() {
       menu={menu}
       header={headerMenu}
       headerContact={data.attributes}
-      bg="white"
-      headerBg="white"
-      footerBg="white"
-      pillowColor=""
-      variantSvg="darkSvg"
+      bg='white'
+      headerBg='white'
+      footerBg='white'
+      pillowColor=''
+      variantSvg='darkSvg'
     >
-      <TitleSection text={agreement.attributes.Title} />
+      <TitleSection text={agreement.attributes.Title}> </TitleSection>
       <BreadCrumbs
         links={[
           {
@@ -76,7 +71,7 @@ export default async function ConfidencePage() {
         ]}
       />
       <div
-        className="richText container !max-w-[800px] !ml-[0px]"
+        className='richText container !max-w-[800px] !ml-[0px]'
         dangerouslySetInnerHTML={{ __html: agreement.attributes.TextEditor }}
       />
     </Layout>

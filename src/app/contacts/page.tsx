@@ -15,14 +15,9 @@ const DEFAULT_LOCALE = "ru";
 export const revalidate = 60;
 
 export async function generateMetadata() {
-  const [data, global] = await Promise.all([
-    getContactsData(DEFAULT_LOCALE),
-    getGlobal(DEFAULT_LOCALE),
-  ]);
+  const [data, global] = await Promise.all([getContactsData(DEFAULT_LOCALE), getGlobal(DEFAULT_LOCALE)]);
   const seo = data.contact?.attributes?.Seo;
-  const pageSeo = seo
-    ? { metaTitle: seo.metaTitle, metaDescription: seo.metaDescription }
-    : null;
+  const pageSeo = seo ? { metaTitle: seo.metaTitle, metaDescription: seo.metaDescription } : null;
   return buildMetadata(pageSeo, global?.attributes ?? undefined);
 }
 
@@ -75,15 +70,15 @@ export default async function ContactsPage() {
       menu={menu}
       header={headerMenu}
       headerContact={data.attributes}
-      bg="white"
-      headerBg="white"
-      footerBg="white"
-      pillowColor="white"
-      variantSvg="darkSvg"
+      bg='white'
+      headerBg='white'
+      footerBg='white'
+      pillowColor='white'
+      variantSvg='darkSvg'
     >
-      <TitleSection text={contact.attributes.Title} />
-      <div className="container">
-        <Line variantColor="grey" />
+      <TitleSection text={contact.attributes.Title}> </TitleSection>
+      <div className='container'>
+        <Line variantColor='grey' />
       </div>
       <BreadCrumbs
         links={[
@@ -94,7 +89,7 @@ export default async function ContactsPage() {
           },
         ]}
       />
-      <div className="container">
+      <div className='container'>
         <Address
           address={contact.attributes.Address}
           phone={contact.attributes.Phone}
@@ -106,9 +101,9 @@ export default async function ContactsPage() {
 
       <Map />
       <IntroCost />
-      <BlogsBlockList articleColor="inherit" titleColor="black" buttonColor="black" blogRes={blogs} />
-      <div className="container">
-        <Line variantColor="grey" />
+      <BlogsBlockList articleColor='inherit' titleColor='black' buttonColor='black' blogRes={blogs} />
+      <div className='container'>
+        <Line variantColor='grey' />
       </div>
     </Layout>
   );

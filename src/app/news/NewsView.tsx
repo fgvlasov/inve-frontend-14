@@ -15,12 +15,7 @@ interface NewsViewProps {
   headerMenu: unknown;
 }
 
-export default function NewsView({
-  news,
-  data,
-  menu,
-  headerMenu,
-}: NewsViewProps) {
+export default function NewsView({ news, data, menu, headerMenu }: NewsViewProps) {
   const { t } = useTranslation("common");
 
   const breadCrumbsItems = [
@@ -31,24 +26,24 @@ export default function NewsView({
 
   return (
     <Layout
-      bg="white"
-      headerBg="white"
-      footerBg="white"
-      pillowColor=""
+      bg='white'
+      headerBg='white'
+      footerBg='white'
+      pillowColor=''
       headerContact={data.attributes}
       data={data}
       menu={menu}
       header={headerMenu}
     >
-      <TitleSection text={t("news.company_news")} />
-      <div className="container">
-        <Line variantColor="grey" />
+      <TitleSection text={t("news.company_news")}> </TitleSection>
+      <div className='container'>
+        <Line variantColor='grey' />
       </div>
       <BreadCrumbs links={breadCrumbsItems} />
       <NewsList news={news} />
       <IntroCost />
-      <div className="container">
-        <Line variantColor="grey" />
+      <div className='container'>
+        <Line variantColor='grey' />
       </div>
     </Layout>
   );

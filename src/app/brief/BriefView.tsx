@@ -15,29 +15,23 @@ interface BriefViewProps {
   headerMenu: unknown;
 }
 
-export default function BriefView({
-  categories,
-  visobjs,
-  data,
-  menu,
-  headerMenu,
-}: BriefViewProps) {
+export default function BriefView({ categories, visobjs, data, menu, headerMenu }: BriefViewProps) {
   const { t } = useTranslation("common");
 
   return (
     <Layout
-      bg="white"
-      headerBg="white"
-      footerBg="white"
-      pillowColor="grey"
+      bg='white'
+      headerBg='white'
+      footerBg='white'
+      pillowColor='grey'
       data={data}
       headerContact={data.attributes}
       menu={menu}
       header={headerMenu}
     >
-      <TitleSection text={t("brief.title_fill")} />
-      <div className="container">
-        <Line variantColor="grey" />
+      <TitleSection text={t("brief.title_fill")}> </TitleSection>
+      <div className='container'>
+        <Line variantColor='grey' />
       </div>
       <BreadCrumbs
         links={[
@@ -49,8 +43,8 @@ export default function BriefView({
 
       <FormBrief categories={categories} visobjs={visobjs} />
 
-      <div className="container">
-        <Line variantColor="grey" />
+      <div className='container'>
+        <Line variantColor='grey' />
       </div>
     </Layout>
   );

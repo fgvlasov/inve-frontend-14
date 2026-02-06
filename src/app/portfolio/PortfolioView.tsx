@@ -37,7 +37,7 @@ export default function PortfolioView({ projects, categories, blogs, data, menu,
       variantSvg='darkSvg'
     >
       <Wrapper color='grey'>
-        <TitleSection text={t("works.title")} />
+        <TitleSection text={t("works.title")}> </TitleSection>
         <div className='container'>
           <Line variantColor='grey' />
         </div>

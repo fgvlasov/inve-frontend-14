@@ -13,26 +13,17 @@ import PortfolioCarousel from "@/components/Portfolio/PortfolioCarousel";
 
 interface ProjectSlugViewProps {
   project: { attributes: Record<string, unknown> };
-  projectsOther: unknown[];
-  data: { attributes: Record<string, unknown> };
-  menu: unknown;
-  headerMenu: unknown;
+  projectsOther: [];
+  data: { attributes: Record<string, []> };
+  menu: [];
+  headerMenu: [];
 }
 
-export default function ProjectSlugView({
-  project,
-  projectsOther,
-  data,
-  menu,
-  headerMenu,
-}: ProjectSlugViewProps) {
+export default function ProjectSlugView({ project, projectsOther, data, menu, headerMenu }: ProjectSlugViewProps) {
   const { t } = useTranslation("common");
 
-  const tags = (project.attributes.tags as { data?: unknown[] })?.data;
-  const breadCrumbsItems = [
-    { title: t("works.title"), path: "/portfolio" },
-    { title: project.attributes.Title as string },
-  ];
+  const tags = ((project.attributes.tags as { data?: unknown[] })?.data || []) as Record<string, unknown>[];
+  const breadCrumbsItems = [{ title: t("works.title"), path: "/portfolio" }, { title: project.attributes.Title as string }];
 
   return (
     <Layout
@@ -40,16 +31,16 @@ export default function ProjectSlugView({
       menu={menu}
       header={headerMenu}
       headerContact={data.attributes}
-      bg="white"
-      headerBg="white"
-      footerBg="white"
-      pillowColor="white"
-      variantSvg="darkSvg"
+      bg='white'
+      headerBg='white'
+      footerBg='white'
+      pillowColor='white'
+      variantSvg='darkSvg'
     >
-      <TitleSection text={project.attributes.Title as string} />
-      {tags?.[0] && <TagBlock tags={tags} />}
-      <div className="container">
-        <Line variantColor="grey" />
+      <TitleSection text={project.attributes.Title as string}> </TitleSection>
+      {tags.length > 0 && <TagBlock tags={tags} />}
+      <div className='container'>
+        <Line variantColor='grey' />
       </div>
       <BreadCrumbs links={breadCrumbsItems} />
       <ProjectCarousel
@@ -64,21 +55,18 @@ export default function ProjectSlugView({
         CustomerName={project.attributes.CustomerName as string}
         CustomerUrl={project.attributes.CustomerUrl as string}
       />
-      <div className="container">
-        <Line variantColor="grey" />
+      <div className='container'>
+        <Line variantColor='grey' />
       </div>
-      <div className="py-10 md:py-15 lg:py-18">
+      <div className='py-10 md:py-15 lg:py-18'>
         <IntroCost />
       </div>
-      <PortfolioCarousel
-        title={t("project.other_projects")}
-        projects={projectsOther}
-      />
-      <div className="container">
-        <Line variantColor="grey" />
+      <PortfolioCarousel title={t("project.other_projects")} projects={projectsOther} />
+      <div className='container'>
+        <Line variantColor='grey' />
       </div>
       {project.attributes.Iframe_mod && (
-        <div className="container hidden">
+        <div className='container hidden'>
           <div
             dangerouslySetInnerHTML={{
               __html: project.attributes.Iframe_mod as string,
