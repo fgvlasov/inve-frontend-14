@@ -38,7 +38,7 @@ export default function AboutView({ about, projects, blogs, data, menu, headerMe
       variantSvg='darkSvg'
     >
       <Wrapper color='grey'>
-        <TitleSection text={about.attributes.Title as string} />
+        <TitleSection text={about.attributes.Title as string}> </TitleSection>
         <div className='container'>
           <Line variantColor='grey' />
         </div>

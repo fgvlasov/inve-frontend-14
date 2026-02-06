@@ -12,7 +12,7 @@ export default function TitleSection({ text, variantColor = "black", children })
         className='text-4xl tracking-tight
         md:text-6xl'
       >
-        {children} {text}
+        {children && children} {text}
       </h1>
     </div>
   );
