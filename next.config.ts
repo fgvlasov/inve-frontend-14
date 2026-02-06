@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-// @ts-expect-error next-translate-plugin is CommonJS
+/* @ts-ignore next-translate-plugin is CommonJS*/
 import nextTranslate from "next-translate-plugin";
 
 const nextConfig: NextConfig = {
