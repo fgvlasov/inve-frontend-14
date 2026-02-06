@@ -40,6 +40,7 @@ export default function ServiceSlugView({
   slides,
 }: ServiceSlugViewProps) {
   const { t } = useTranslation("common");
+  const ourWorksText = typeof category.attributes.Our_works_text === "string" ? category.attributes.Our_works_text : "";
 
   return (
     <Layout
@@ -85,13 +86,11 @@ export default function ServiceSlugView({
             <h2 className=' whitespace-nowrap mb-7 text-3.5xl text-black-russian3 font-arial font-normal lg:text-4xl  w-[260px] '>
               Наши работы
             </h2>
-            {category.attributes.Our_works_text && (
-              <div className='whitespace-pre-wrap'>{category.attributes.Our_works_text as string}</div>
-            )}
+            {ourWorksText && <div className='whitespace-pre-wrap'>{category.attributes.Our_works_text as string}</div>}
           </div>
         </section>
 
-        <ProjectsList projects={projects} moreProjects={true} focusService={category.id} />
+        <ProjectsList projects={projects} moreProjects={true} />
         {category.attributes.Category_workplan && <ServicesWorkPlan data={category.attributes.Category_workplan as unknown} />}
 
         {category.attributes.Service_video && <ServicesVideo image={category.attributes.Service_video as unknown} />}

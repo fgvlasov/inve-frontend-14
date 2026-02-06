@@ -4,14 +4,9 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import ProjectItemWork from "../ui/ProjectItemWork";
 import ProjectItemImage from "../ui/ProjectItemImage";
 import { getStrapiMedia } from "@/lib/media";
-import useTranslation from "next-translate/useTranslation";
 import ProjectButton from "../ui/ProjectButton";
 
-export default function ProjectsList({ projects, moreProjects, projectsQuantity = 100, focusService = null }) {
-  const { t } = useTranslation("common");
-  const i18n = useTranslation();
-  const locale = i18n.lang;
-
+export default function ProjectsList({ projects, moreProjects }) {
   return (
     <section
       className='container bg-whisper relative z-10 rounded-5xl pb-6 pt-6 text-blackRussian
