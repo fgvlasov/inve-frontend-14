@@ -12,24 +12,16 @@ import Wrapper from "@/components/ui/Wrapper";
 import ServicesSlides from "@/components/Services/ServicesSlides";
 
 interface PortfolioViewProps {
-  projects: unknown[];
-  categories: unknown[];
-  blogs: unknown[];
+  projects: [];
+  categories: [];
+  blogs: [];
   data: { attributes: Record<string, unknown> };
-  menu: unknown;
-  headerMenu: unknown;
-  slides?: unknown[];
+  menu: [];
+  headerMenu: [];
+  slides?: [];
 }
 
-export default function PortfolioView({
-  projects,
-  categories,
-  blogs,
-  data,
-  menu,
-  headerMenu,
-  slides = [],
-}: PortfolioViewProps) {
+export default function PortfolioView({ projects, categories, blogs, data, menu, headerMenu, slides = [] }: PortfolioViewProps) {
   const { t } = useTranslation("common");
 
   return (
@@ -38,16 +30,16 @@ export default function PortfolioView({
       menu={menu}
       header={headerMenu}
       headerContact={data.attributes}
-      bg="black"
-      headerBg="white"
-      footerBg="black"
-      pillowColor="dark"
-      variantSvg="darkSvg"
+      bg='black'
+      headerBg='white'
+      footerBg='black'
+      pillowColor='dark'
+      variantSvg='darkSvg'
     >
-      <Wrapper color="grey">
+      <Wrapper color='grey'>
         <TitleSection text={t("works.title")} />
-        <div className="container">
-          <Line variantColor="grey" />
+        <div className='container'>
+          <Line variantColor='grey' />
         </div>
         <BreadCrumbs
           links={[
@@ -60,19 +52,14 @@ export default function PortfolioView({
         />
         <ProjectsListPortfolio projects={projects} categories={categories} />
       </Wrapper>
-      <div className="pt-2.5 md:pt-10 lg:pt-25">
-        <div className="container">
+      <div className='pt-2.5 md:pt-10 lg:pt-25'>
+        <div className='container'>
           <ServicesSlides slides={slides} />
         </div>
         <IntroCost />
       </div>
 
-      <BlogsBlockList
-        articleColor="nero"
-        titleColor="white"
-        buttonColor="white"
-        blogRes={blogs}
-      />
+      <BlogsBlockList articleColor='nero' titleColor='white' buttonColor='white' blogRes={blogs} />
     </Layout>
   );
 }
