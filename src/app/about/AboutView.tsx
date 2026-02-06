@@ -14,23 +14,15 @@ import ProjectsTitle from "@/components/Projects/ProjectsTitle";
 
 interface AboutViewProps {
   about: { attributes: Record<string, unknown> };
-  projects: unknown[];
-  blogs: unknown[];
+  projects: [];
+  blogs: [];
   data: { attributes: Record<string, unknown> };
-  menu: unknown;
-  headerMenu: unknown;
-  slides?: unknown[];
+  menu: [];
+  headerMenu: [];
+  slides?: [];
 }
 
-export default function AboutView({
-  about,
-  projects,
-  blogs,
-  data,
-  menu,
-  headerMenu,
-  slides = [],
-}: AboutViewProps) {
+export default function AboutView({ about, projects, blogs, data, menu, headerMenu, slides = [] }: AboutViewProps) {
   const { t } = useTranslation("common");
 
   return (
@@ -39,16 +31,16 @@ export default function AboutView({
       data={data}
       menu={menu}
       header={headerMenu}
-      bg="black"
-      headerBg="white"
-      footerBg="black"
-      pillowColor="dark"
-      variantSvg="darkSvg"
+      bg='black'
+      headerBg='white'
+      footerBg='black'
+      pillowColor='dark'
+      variantSvg='darkSvg'
     >
-      <Wrapper color="grey">
+      <Wrapper color='grey'>
         <TitleSection text={about.attributes.Title as string} />
-        <div className="container">
-          <Line variantColor="grey" />
+        <div className='container'>
+          <Line variantColor='grey' />
         </div>
         <BreadCrumbs
           links={[
@@ -68,18 +60,13 @@ export default function AboutView({
           slides={slides}
         />
         <IntroCost />
-        <div className="container py-10 lg:pt-15">
+        <div className='container py-10 lg:pt-15'>
           <ProjectsTitle />
-          <Line width="full" />
+          <Line width='full' />
         </div>
         <ProjectsList moreProjects={true} projects={projects} />
       </Wrapper>
-      <BlogsBlockList
-        articleColor="nero"
-        titleColor="white"
-        buttonColor="white"
-        blogRes={blogs}
-      />
+      <BlogsBlockList articleColor='nero' titleColor='white' buttonColor='white' blogRes={blogs} />
     </Layout>
   );
 }
