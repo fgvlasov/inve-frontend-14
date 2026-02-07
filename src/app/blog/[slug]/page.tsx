@@ -1,15 +1,4 @@
 import { notFound } from "next/navigation";
-import Layout from "@/components/layout";
-import TitleSection from "@/components/ui/TitleSection";
-import Line from "@/components/ui/Line";
-import BreadCrumbs from "@/components/ui/Breadcrumbs";
-import IntroNews from "@/components/News/IntroNews";
-import CarouselNews from "@/components/News/CarouselNews";
-import QuoteBlock from "@/components/News/QuoteBlock";
-import ReactMarkdown from "react-markdown";
-import LoadFileBlock from "@/components/News/LoadFileBlock";
-import BlogsBlockList from "@/components/Blogs/BlogsBlockList";
-import Video from "@/components/Projects/Video";
 import { fetchAPI } from "@/lib/api";
 import { getGlobal, buildMetadata } from "@/lib/metadata";
 import BlogSlugView from "./BlogSlugView";
@@ -68,11 +57,7 @@ async function getBlogData(slug: string) {
   };
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const data = await getBlogData(slug);
   if (!data.blog) return {};
@@ -85,23 +70,11 @@ export async function generateMetadata({
   return buildMetadata(pageSeo, global?.attributes ?? undefined);
 }
 
-export default async function BlogSlugPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function BlogSlugPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const { blog, blogsOthers, data, menu, headerMenu } = await getBlogData(slug);
 
   if (!blog) notFound();
 
-  return (
-    <BlogSlugView
-      blog={blog}
-      blogsOthers={blogsOthers}
-      data={data}
-      menu={menu}
-      headerMenu={headerMenu}
-    />
-  );
+  return <BlogSlugView blog={blog} blogsOthers={blogsOthers} data={data} menu={menu} headerMenu={headerMenu} />;
 }
