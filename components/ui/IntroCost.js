@@ -1,12 +1,12 @@
-"use client";	
-import useTranslation from "next-translate/useTranslation";
+"use client";
+import { useTranslations } from "next-intl";
 import PillowLink from "./PillowLink";
 //import Loading from "./Loading";
 import { useEffect, useState } from "react";
 import { fetchAPI } from "@/lib/api";
 
 export default function IntroCost() {
-  const { t } = useTranslation("common");
+  const t = useTranslations();
   const [data, setData] = useState();
   const i18n = useTranslation();
   const locale = i18n.lang;

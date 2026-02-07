@@ -1,6 +1,6 @@
 "use client";
 
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 import Layout from "@/components/layout";
 import TitleSection from "@/components/ui/TitleSection";
 import BreadCrumbs from "@/components/ui/Breadcrumbs";
@@ -22,7 +22,7 @@ interface PortfolioViewProps {
 }
 
 export default function PortfolioView({ projects, categories, blogs, data, menu, headerMenu, slides = [] }: PortfolioViewProps) {
-  const { t } = useTranslation("common");
+  const t = useTranslations();
 
   return (
     <Layout

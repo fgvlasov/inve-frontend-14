@@ -1,6 +1,6 @@
 "use client";
 
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 import Layout from "@/components/layout";
 import TitleSection from "@/components/ui/TitleSection";
 import Line from "@/components/ui/Line";
@@ -17,7 +17,7 @@ interface PortfolioSlugViewProps {
 }
 
 export default function PortfolioSlugView({ tag, projects, categories, data, menu, headerMenu }: PortfolioSlugViewProps) {
-  const { t } = useTranslation("common");
+  const t = useTranslations();
 
   const breadCrumbsItems = [{ title: t("All_projects"), path: "/portfolio" }, { title: tag.attributes.Name as string }];
 

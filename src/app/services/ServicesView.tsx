@@ -1,6 +1,6 @@
 "use client";
 
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 import Layout from "@/components/layout";
 import TitleSection from "@/components/ui/TitleSection";
 import BreadCrumbs from "@/components/ui/Breadcrumbs";
@@ -20,7 +20,7 @@ interface ServicesViewProps {
 }
 
 export default function ServicesView({ services, projects, data, menu, headerMenu, slides = [] }: ServicesViewProps) {
-  const { t } = useTranslation("common");
+  const t = useTranslations();
 
   return (
     <Layout

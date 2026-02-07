@@ -1,6 +1,6 @@
 "use client";
 
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 import Layout from "@/components/layout";
 import IntroCost from "@/components/ui/IntroCost";
 import TitleSection from "@/components/ui/TitleSection";
@@ -23,7 +23,7 @@ interface AboutViewProps {
 }
 
 export default function AboutView({ about, projects, blogs, data, menu, headerMenu, slides = [] }: AboutViewProps) {
-  const { t } = useTranslation("common");
+  const t = useTranslations();
 
   return (
     <Layout

@@ -5,7 +5,7 @@ import MobileMenu from "./ui/MobileMenu";
 import { useState } from "react";
 import Nav from "./ui/Nav";
 import Order from "./ui/Order";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 import Line from "./ui/Line";
 
 export default function Header({ variant, variantSvg, menu, contactData }) {

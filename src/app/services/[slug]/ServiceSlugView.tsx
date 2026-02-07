@@ -1,6 +1,6 @@
 "use client";
 
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 import Layout from "@/components/layout";
 import TitleSection from "@/components/ui/TitleSection";
 import BreadCrumbs from "@/components/ui/Breadcrumbs";
@@ -39,7 +39,7 @@ export default function ServiceSlugView({
   headerMenu,
   slides,
 }: ServiceSlugViewProps) {
-  const { t } = useTranslation("common");
+  const t = useTranslations();
   const ourWorksText = typeof category.attributes.Our_works_text === "string" ? category.attributes.Our_works_text : "";
 
   return (

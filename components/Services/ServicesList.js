@@ -3,14 +3,14 @@ import Title from "@/components/ui/Title";
 import ServiceItem from "@/components/ui/ServiceItem";
 import PillowLink from "@/components/ui/PillowLink";
 import FormService from "@/components/ui/FormService";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { fetchAPI } from "@/lib/api";
 import Loading from "@/components/ui/Loading";
 
 export default function ServicesList() {
   const [data, setData] = useState();
-  const { t } = useTranslation("common");
+  const t = useTranslations();
   const i18n = useTranslation();
   const locale = i18n.lang;
 

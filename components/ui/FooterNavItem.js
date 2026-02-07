@@ -1,5 +1,5 @@
 "use client";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export default function FooterNavItem({ text, link = "#" }) {

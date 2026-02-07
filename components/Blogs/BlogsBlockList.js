@@ -5,14 +5,14 @@ import ButtonPagination from "@/components/ui/ButtonPagination";
 import TitleColor from "../ui/TitleColor";
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 
 import "swiper/css";
 import Loading from "../ui/Loading";
 import Title from "../ui/Title";
 
 export default function BlogsBlockList({ titleColor, articleColor, buttonColor, blogRes, titleOthers = false }) {
-  const { t } = useTranslation("common");
+  const t = useTranslations();
 
   const swiperRef = useRef();
   const prevSlide = () => swiperRef.current.slidePrev();

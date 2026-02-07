@@ -4,12 +4,12 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import ProjectItemWork from "../ui/ProjectItemWork";
 import ProjectItemImage from "../ui/ProjectItemImage";
 import { getStrapiMedia } from "@/lib/media";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 import TagItemSection from "../ui/TagItemSection";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function ProjectsListPortfolio({ projects, categories, tag = "", slug = "" }) {
-  const { t } = useTranslation("common");
+  const t = useTranslations();
   const i18n = useTranslation();
   const locale = i18n.lang;
   const router = useRouter();

@@ -1,6 +1,6 @@
 "use client";
 
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 import Layout from "@/components/layout";
 import TitleSection from "@/components/ui/TitleSection";
 import Line from "@/components/ui/Line";
@@ -22,7 +22,7 @@ interface BlogSlugViewProps {
 }
 
 export default function BlogSlugView({ blog, blogsOthers, data, menu, headerMenu }: BlogSlugViewProps) {
-  const { t } = useTranslation("common");
+  const t = useTranslations();
 
   const breadCrumbsItems = [{ title: t("All_news"), path: "/news" }, { title: blog.attributes.Title as string }];
 

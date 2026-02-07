@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ServiceChildrenItem from "./ServicesChildrenItem";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 import { fetchAPI } from "@/lib/api";
 import Loading from "../ui/Loading";
 
