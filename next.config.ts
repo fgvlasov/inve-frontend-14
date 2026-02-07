@@ -1,6 +1,4 @@
 import type { NextConfig } from "next";
-/* @ts-ignore next-translate-plugin is CommonJS*/
-import nextTranslate from "next-translate-plugin";
 
 const nextConfig: NextConfig = {
   turbopack: {},
@@ -16,7 +14,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-const config = nextTranslate(nextConfig);
-// App Router does not support next.config i18n; next-translate uses i18n.js and plugin only
-if ("i18n" in config) delete (config as Record<string, unknown>).i18n;
-export default config;
+export default nextConfig;
