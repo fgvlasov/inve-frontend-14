@@ -1,9 +1,6 @@
-"use client";
-import useTranslation from "next-translate/useTranslation";
 import Logo from "./Logo";
 
 export default function Copyright() {
-  const { t } = useTranslation("common");
   return (
     <div
       className='pt-10.5 text-sm flex items-end 
@@ -21,7 +18,7 @@ export default function Copyright() {
         2026 &copy; invert.studio
       </p>
       <a href='/confidence' className='underline decoration-1 opacity-50'>
-        {t("confidence_policy")}
+        Политика конфиденциальности
       </a>
       <a href='https://web-dev-studio.ru'>
         <p className='hidden lg:block'>
