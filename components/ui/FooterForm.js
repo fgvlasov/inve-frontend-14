@@ -11,7 +11,7 @@ export default function FooterForm({ pillowColor }) {
     >
       <div className='textWhite text-4xl tracking-tight flex flex-col lg:text-6xl shrink-1'>
         Есть проект?
-        <span className='text-blue mt-2.5'>{t("footer.let_discuss")}</span>
+        <span className='text-blue mt-2.5'>Давайте обсудим!</span>
       </div>
 
       <div
