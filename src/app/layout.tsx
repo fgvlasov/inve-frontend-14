@@ -1,6 +1,7 @@
 import "./globals.css";
 import { getGlobal } from "@/lib/metadata";
 import Providers from "./providers";
+import { Suspense } from "react";
 
 export const revalidate = 60;
 
@@ -19,8 +20,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang='ru'>
       <body>
-        {/* ✅ All client-only providers go here */}
-        <Providers global={global?.attributes}>{children}</Providers>
+        <Suspense fallback={null}>
+          <Providers global={global?.attributes}>{children}</Providers>
+        </Suspense>
       </body>
     </html>
   );
