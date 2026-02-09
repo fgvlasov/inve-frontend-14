@@ -63,8 +63,8 @@ export default async function ServicesForCategory({ parent }: { parent: number }
               key={service.id}
               serviceId={parent}
               title={attrs.Title ?? ""}
-              pathCategory={pathCategory}
-              pathDirection={pathDirection}
+              pathCategory={pathCategory != null ? String(pathCategory) : ""}
+              pathDirection={pathDirection != null ? String(pathDirection) : ""}
               image={attrs.Image}
             />
           );
