@@ -1,51 +1,64 @@
 import ServiceItem from "@/components/ui/ServiceItem";
-import { useTranslations } from "next-intl";
 import Loading from "../ui/Loading";
-import { useEffect, useState } from "react";
 import { fetchAPI } from "@/lib/api";
 import BriefCost from "../ui/BriefCost";
 
-export default function ServicesListPage({ services }) {
-  const t = useTranslations();
-  const i18n = useTranslation();
-  const locale = i18n.lang;
-  const [data, setData] = useState();
+export const revalidate = 3600;
 
-  useEffect(() => {
-    async function fetchData() {
-      const serviceRes = await fetchAPI("/categories", {
-        fields: ["name", "slug", "textPart1", "textPart2", "textPart3", "textPart4"],
-        locale: locale,
-        populate: ["image"],
-        filters: {
-          id: {
-            $eq: 11,
-          },
-        },
-      });
+type StrapiService = {
+  id: number;
+  attributes: {
+    name: string;
+    slug: string;
+    textPart1?: string;
+    textPart2?: string;
+    textPart3?: string;
+    textPart4?: string;
+    image?: string;
+  };
+};
 
-      setData(serviceRes.data[0]);
-    }
-    fetchData();
-  }, [locale]);
+type Props = {
+  services: StrapiService[];
+};
 
-  if (!data || !services) {
+export default async function ServicesListPage({ services }: Props) {
+  const locale = "ru";
+  let data: StrapiService | null = null;
+
+  try {
+    const serviceRes = await fetchAPI("/categories", {
+      fields: ["name", "slug", "textPart1", "textPart2", "textPart3", "textPart4"],
+      locale,
+      populate: ["image"],
+      filters: {
+        id: { $eq: 11 },
+      },
+      pagination: { start: 0, limit: 1 },
+    });
+
+    data = (serviceRes?.data?.[0] ?? null) as StrapiService | null;
+  } catch {
+    data = null;
+  }
+
+  if (!services || !data) {
     return <Loading />;
   }
 
   return (
     <section
       className='container pt-10 pb-11
-    md:pb-[106px] md:pt-20 
-    lg:pb-34'
+      md:pb-[106px] md:pt-20
+      lg:pb-34'
     >
       <div className='lg:flex pb-10'>
         {services.map((service, i) => (
           <ServiceItem
-            key={i}
+            key={service.id ?? i}
             title={service.attributes.name}
             subtitle=''
-            link={`${i18n.lang}/services/${service.attributes.slug}`}
+            link={`/services/${service.attributes.slug}`}
             textPart1={service.attributes.textPart1}
             textPart2={service.attributes.textPart2}
             textPart3={service.attributes.textPart3}
@@ -55,6 +68,7 @@ export default function ServicesListPage({ services }) {
           />
         ))}
       </div>
+
       <div className='lg:grid grid-cols-3'>
         <ServiceItem
           title={data.attributes.name}
@@ -67,7 +81,8 @@ export default function ServicesListPage({ services }) {
           image={data.attributes.image}
           centered={true}
         />
-        <BriefCost title={t("brief.services_list_title")} />
+
+        <BriefCost title='Заполните бриф' />
       </div>
     </section>
   );

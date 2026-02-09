@@ -8,8 +8,6 @@ import Loading from "../ui/Loading";
 
 export default function ServicesListHome({ services }) {
   const t = useTranslations();
-  const i18n = useTranslation();
-  const locale = i18n.lang;
   if (!services) {
     <Loading />;
   }

@@ -1,10 +1,9 @@
 "use client";
 import { useTranslations } from "next-intl";
-
 import BreadCrumbsItems from "./BreadcrumbsItem";
 
 export default function BreadCrumbs({ links }) {
-  const { t } = useTranslation("common");
+  const t = useTranslations();
   return (
     <div
       className='pt-3 container

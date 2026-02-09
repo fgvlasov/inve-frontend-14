@@ -1,6 +1,3 @@
-"use client";
-
-import { useTranslations } from "next-intl";
 import Layout from "@/components/layout";
 import TitleSection from "@/components/ui/TitleSection";
 import BreadCrumbs from "@/components/ui/Breadcrumbs";
@@ -20,8 +17,6 @@ interface ServicesViewProps {
 }
 
 export default function ServicesView({ services, projects, data, menu, headerMenu, slides = [] }: ServicesViewProps) {
-  const t = useTranslations();
-
   return (
     <Layout
       data={data}
@@ -35,7 +30,7 @@ export default function ServicesView({ services, projects, data, menu, headerMen
       variantSvg='darkSvg'
     >
       <Wrapper>
-        <TitleSection text={t("services.title")} variantColor='white'>
+        <TitleSection text='Услуги' variantColor='white'>
           {" "}
         </TitleSection>
         <div className='container'>
@@ -44,7 +39,7 @@ export default function ServicesView({ services, projects, data, menu, headerMen
         <BreadCrumbs
           links={[
             {
-              title: t("services.title"),
+              title: "Услуги",
               path: "",
               active: false,
             },

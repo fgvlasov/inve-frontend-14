@@ -1,8 +1,6 @@
 import "./globals.css";
 import { getGlobal } from "@/lib/metadata";
-import { NextIntlClientProvider } from "next-intl";
 import Providers from "./providers";
-import messages from "@/locales/ru/common.json";
 
 export const revalidate = 60;
 
@@ -19,14 +17,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const global = await getGlobal("ru");
 
   return (
-    <html lang='en'>
+    <html lang='ru'>
       <body>
         {/* ✅ All client-only providers go here */}
-        <Providers global={global?.attributes}>
-          <NextIntlClientProvider locale='ru' messages={messages}>
-            {children}
-          </NextIntlClientProvider>
-        </Providers>
+        <Providers global={global?.attributes}>{children}</Providers>
       </body>
     </html>
   );

@@ -17,7 +17,7 @@ export default function Address({ address, phone, email, socials }) {
         className='md:max-w-[282px] md:mr-auto
       xl:w-[32%] xl:max-w-none xl:m-0'
       >
-        <AddressTitle title={t`contacts.address`} />
+        <AddressTitle title={t("contacts.address")} />
         <AddressText text={address} />
       </div>
       <div
@@ -25,7 +25,7 @@ export default function Address({ address, phone, email, socials }) {
         md:mr-6 md:pb-0
         xl:w-[32%] xl:m-0 xl:pl-[17%]'
       >
-        <AddressTitle title={t`contacts.numbers`} />
+        <AddressTitle title={t("contacts.numbers")} />
         <div
           className='w-2/4 tracking-tight pb-5
         md:w-auto md:text-1xl md:pb-0'

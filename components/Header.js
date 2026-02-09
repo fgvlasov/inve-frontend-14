@@ -5,12 +5,9 @@ import MobileMenu from "./ui/MobileMenu";
 import { useState } from "react";
 import Nav from "./ui/Nav";
 import Order from "./ui/Order";
-import { useTranslations } from "next-intl";
 import Line from "./ui/Line";
 
 export default function Header({ variant, variantSvg, menu, contactData }) {
-  const i18n = useTranslation();
-  const locale = i18n.lang;
   const [isNavOpen, setIsNavOpen] = useState(false);
   const onCloseNav = () => {
     setIsNavOpen(false);
@@ -41,7 +38,6 @@ export default function Header({ variant, variantSvg, menu, contactData }) {
       >
         {" "}
         <Logo color='inherit' />
-        {/* <Language lang={locale} /> */}
         <Burger onClick={onOpenNav} color={variant} />
         {isNavOpen && <MobileMenu isOpen={isNavOpen} menu={menu} onClose={onCloseNav} handleOpenModal={handleOpenModal} />}
         <Nav menu={menu} />

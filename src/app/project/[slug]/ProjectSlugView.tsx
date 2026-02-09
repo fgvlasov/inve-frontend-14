@@ -1,6 +1,3 @@
-"use client";
-
-import { useTranslations } from "next-intl";
 import Layout from "@/components/layout";
 import TitleSection from "@/components/ui/TitleSection";
 import BreadCrumbs from "@/components/ui/Breadcrumbs";
@@ -20,10 +17,8 @@ interface ProjectSlugViewProps {
 }
 
 export default function ProjectSlugView({ project, projectsOther, data, menu, headerMenu }: ProjectSlugViewProps) {
-  const t = useTranslations();
-
   const tags: any[] = (project?.attributes?.tags ?? []) as any[];
-  const breadCrumbsItems = [{ title: t("works.title"), path: "/portfolio" }, { title: project.attributes.Title as string }];
+  const breadCrumbsItems = [{ title: "Портфолио", path: "/portfolio" }, { title: project.attributes.Title as string }];
 
   return (
     <Layout
@@ -61,7 +56,7 @@ export default function ProjectSlugView({ project, projectsOther, data, menu, he
       <div className='py-10 md:py-15 lg:py-18'>
         <IntroCost />
       </div>
-      <PortfolioCarousel title={t("project.other_projects")} projects={projectsOther} />
+      <PortfolioCarousel title='Другие проекты' projects={projectsOther} />
       <div className='container'>
         <Line variantColor='grey' />
       </div>

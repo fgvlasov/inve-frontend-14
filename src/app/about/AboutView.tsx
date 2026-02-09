@@ -1,6 +1,3 @@
-"use client";
-
-import { useTranslations } from "next-intl";
 import Layout from "@/components/layout";
 import IntroCost from "@/components/ui/IntroCost";
 import TitleSection from "@/components/ui/TitleSection";
@@ -23,8 +20,6 @@ interface AboutViewProps {
 }
 
 export default function AboutView({ about, projects, blogs, data, menu, headerMenu, slides = [] }: AboutViewProps) {
-  const t = useTranslations();
-
   return (
     <Layout
       headerContact={data.attributes}
@@ -55,7 +50,7 @@ export default function AboutView({ about, projects, blogs, data, menu, headerMe
         <AboutIntro
           title1={about.attributes.Title as string}
           text1={about.attributes.AboutPurpose as string}
-          title2={t("about.aboutOpportunities")}
+          title2='наши возможности'
           text2={about.attributes.AboutOpportunities as string}
           slides={slides}
         />

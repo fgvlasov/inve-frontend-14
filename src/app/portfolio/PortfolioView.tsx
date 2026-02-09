@@ -1,6 +1,3 @@
-"use client";
-
-import { useTranslations } from "next-intl";
 import Layout from "@/components/layout";
 import TitleSection from "@/components/ui/TitleSection";
 import BreadCrumbs from "@/components/ui/Breadcrumbs";
@@ -22,8 +19,6 @@ interface PortfolioViewProps {
 }
 
 export default function PortfolioView({ projects, categories, blogs, data, menu, headerMenu, slides = [] }: PortfolioViewProps) {
-  const t = useTranslations();
-
   return (
     <Layout
       data={data}
@@ -37,14 +32,14 @@ export default function PortfolioView({ projects, categories, blogs, data, menu,
       variantSvg='darkSvg'
     >
       <Wrapper color='grey'>
-        <TitleSection text={t("works.title")}> </TitleSection>
+        <TitleSection text='Портфолио'> </TitleSection>
         <div className='container'>
           <Line variantColor='grey' />
         </div>
         <BreadCrumbs
           links={[
             {
-              title: t("works.title"),
+              title: "Портфолио",
               path: "",
               active: false,
             },

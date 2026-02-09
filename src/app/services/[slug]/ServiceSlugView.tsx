@@ -1,6 +1,3 @@
-"use client";
-
-import { useTranslations } from "next-intl";
 import Layout from "@/components/layout";
 import TitleSection from "@/components/ui/TitleSection";
 import BreadCrumbs from "@/components/ui/Breadcrumbs";
@@ -39,7 +36,6 @@ export default function ServiceSlugView({
   headerMenu,
   slides,
 }: ServiceSlugViewProps) {
-  const t = useTranslations();
   const ourWorksText = typeof category.attributes.Our_works_text === "string" ? category.attributes.Our_works_text : "";
 
   return (
@@ -59,14 +55,8 @@ export default function ServiceSlugView({
         <div className='container'>
           <Line variantColor='grey' />
         </div>
-        <BreadCrumbs
-          links={[{ title: t("services.linkServices"), path: "/services" }, { title: category.attributes.name as string }]}
-        />
-        <ServiceIntro
-          title={t("About service")}
-          text={category.attributes.Description as string}
-          image={category.attributes.image}
-        />
+        <BreadCrumbs links={[{ title: "Услуги", path: "/services" }, { title: category.attributes.name as string }]} />
+        <ServiceIntro title='об услуге' text={category.attributes.Description as string} image={category.attributes.image} />
         <ServicesForCategory parent={category.id} />
         {category.attributes.What_is && <ServicesWhatIs data={category.attributes.What_is as unknown} />}
         <IntroCost />

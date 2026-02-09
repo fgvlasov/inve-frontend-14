@@ -10,8 +10,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 export default function ProjectsListPortfolio({ projects, categories, tag = "", slug = "" }) {
   const t = useTranslations();
-  const i18n = useTranslation();
-  const locale = i18n.lang;
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
