@@ -1,0 +1,26 @@
+name: Deploy (prod)
+
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USER }}
+          key: ${{ secrets.PROD_SSH_KEY }}
+          script: |
+            set -e
+            cd ${{ vars.PROD_PATH }}
+            git fetch --all
+            git reset --hard origin/master
+            npm ci
+            npm run build
+            pm2 start ecosystem.config.js --only invert-frontend || true
+            pm2 reload invert-frontend
+            pm2 save
