@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "beapp-v0",
+      name: "invert-frontend",
       cwd: "/var/www/test_fr_inve_usr/data/www/test-fr.invert.studio",
       script: "node_modules/next/dist/bin/next",
       args: "start -p 3000",
