@@ -92,14 +92,11 @@ export default function ProjectsListForMain({
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  // ✅ стабилизируем порядок
-  const items = useMemo(() => {
-    const arr = Array.isArray(projects) ? [...projects] : [];
-    arr.sort((a, b) => (a?.id ?? 0) - (b?.id ?? 0));
-    return arr;
+  // ✅ БЕЗ сортировки: порядок как пришёл из Strapi
+  const cards = useMemo(() => {
+    const arr = Array.isArray(projects) ? projects : [];
+    return arr.map((project) => <ProjectCard key={project.id} project={project} />);
   }, [projects]);
-
-  const cards = useMemo(() => items.map((project) => <ProjectCard key={project.id} project={project} />), [items]);
 
   return (
     <section className='pt-16 pb-5 md:pt-[60px] text-blackRussian md:pb-12 lg:pt-36 lg:pb-9'>
