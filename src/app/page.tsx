@@ -141,20 +141,19 @@ export default async function HomePage() {
       pillowColor='dark'
       variantSvg='darkSvg'
     >
-      <main className={homeStyles.main}>
-        <ServicesAbout about={about} servicesAbout={servicesAbout} />
-        <ServicesListHome services={services} />
+      {/* <main className={homeStyles.main}></main> */}
+      <ServicesAbout about={about} servicesAbout={servicesAbout} />
+      <ServicesListHome services={services} />
 
-        <Wrapper color='grey' position='top'>
-          <ProjectsListForMain projects={projects} moreProjects={true} marqueeData={globalMarquee} />
-        </Wrapper>
+      <Wrapper color='grey' position='top'>
+        <ProjectsListForMain projects={projects} moreProjects={true} marqueeData={globalMarquee} />
+      </Wrapper>
 
-        <BlogsBlockList articleColor='nero' titleColor='white' buttonColor='white' blogRes={blogs} />
+      <BlogsBlockList articleColor='nero' titleColor='white' buttonColor='white' blogRes={blogs} />
 
-        <div className='container'>
-          <Line variantColor='eclipse' />
-        </div>
-      </main>
+      <div className='container'>
+        <Line variantColor='eclipse' />
+      </div>
     </Layout>
   );
 }
