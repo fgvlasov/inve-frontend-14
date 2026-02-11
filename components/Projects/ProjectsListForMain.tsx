@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import ProjectItem from "@/components/ui/ProjectItem";
 import Tag from "@/components/ui/Tag";
@@ -17,7 +17,7 @@ const ProjectsMasonryClient = dynamic(() => import("./ProjectsMasonryClient"), {
   ssr: false,
 });
 
-function calcAspectHeight(project, targetWidth = 600, fallbackHeight = 400) {
+function calcAspectHeight(project: any, targetWidth = 600, fallbackHeight = 400) {
   const media = project?.attributes?.Poster_for_mainPage?.data?.attributes ?? project?.attributes?.Poster?.data?.attributes;
 
   const w = media?.width;
@@ -27,7 +27,7 @@ function calcAspectHeight(project, targetWidth = 600, fallbackHeight = 400) {
   return Math.round((targetWidth / w) * h);
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project }: { project: any }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const title = project?.attributes?.Title ?? "";
@@ -37,16 +37,15 @@ function ProjectCard({ project }) {
   const height = useMemo(() => calcAspectHeight(project, 600, 400), [project]);
 
   const poster = project?.attributes?.Poster_for_mainPage ?? project?.attributes?.Poster;
-
   const src = poster ? getStrapiMedia(poster) : null;
 
   return (
-    <ProjectItem key={project.id} name={title} link={slug}>
+    <ProjectItem name={title} link={slug}>
       <div className='rounded-l15 relative'>
         {src && (
           <img
             src={src}
-            width='600'
+            width={600}
             height={height}
             loading='lazy'
             alt={title}
@@ -62,7 +61,7 @@ function ProjectCard({ project }) {
         {tags.length > 0 && (
           <div className='absolute top-5 left-5 right-5'>
             <div className='z-2 relative flex gap-1 uppercase flex-wrap'>
-              {tags.map((x) => (
+              {tags.map((x: any) => (
                 <Tag
                   key={x.id ?? x.attributes?.slug ?? x.attributes?.Name}
                   text={x.attributes?.Name}
@@ -78,16 +77,29 @@ function ProjectCard({ project }) {
   );
 }
 
-export default function ProjectsListForMain({ projects, moreProjects = false }) {
+export default function ProjectsListForMain({
+  projects,
+  moreProjects = false,
+  marqueeData,
+}: {
+  projects: any[];
+  moreProjects?: boolean;
+  marqueeData: any;
+}) {
   if (!projects) return <Loading />;
 
-  // ✅ стабилизируем порядок + ключи
+  // ✅ включаем masonry только после mount
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  // ✅ стабилизируем порядок
   const items = useMemo(() => {
     const arr = Array.isArray(projects) ? [...projects] : [];
-    // если есть ListPosition — можно стабильно досортировать
     arr.sort((a, b) => (a?.id ?? 0) - (b?.id ?? 0));
     return arr;
   }, [projects]);
+
+  const cards = useMemo(() => items.map((project) => <ProjectCard key={project.id} project={project} />), [items]);
 
   return (
     <section className='pt-16 pb-5 md:pt-[60px] text-blackRussian md:pb-12 lg:pt-36 lg:pb-9'>
@@ -96,28 +108,20 @@ export default function ProjectsListForMain({ projects, moreProjects = false }) 
           <ProjectsTitle />
 
           <div className='pt-15 pb-3.8 border-t border-black-russian md:pt-10 lg:pt-12'>
-            {/* ✅ SSR-safe fallback grid: одинаковый HTML до гидрации */}
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-[30px]'>
-              {items.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-
-            {/* ✅ Клиентская masonry (включится после загрузки JS) */}
-            <div className='hidden'>
-              <ProjectsMasonryClient>
-                {items.map((project) => (
-                  <ProjectCard key={project.id} project={project} />
-                ))}
-              </ProjectsMasonryClient>
-            </div>
+            {!mounted ? (
+              // ✅ SSR-safe fallback grid (одинаковый HTML до гидрации)
+              <div className='grid grid-cols-1 lg:grid-cols-2 gap-[30px]'>{cards}</div>
+            ) : (
+              // ✅ Masonry уже на клиенте
+              <ProjectsMasonryClient>{cards}</ProjectsMasonryClient>
+            )}
           </div>
 
           {moreProjects && <ProjectButton />}
         </div>
       </div>
 
-      <Marquee />
+      <Marquee texts={marqueeData} />
     </section>
   );
 }

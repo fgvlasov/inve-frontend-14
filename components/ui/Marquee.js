@@ -1,14 +1,9 @@
 "use client";
-
-import { useContext } from "react";
 import Loading from "./Loading";
-import { GlobalContext } from "@/src/app/global-context";
 
-export default function Marquee() {
-  const global = useContext(GlobalContext);
-  const marquee = global?.Marquee;
-
-  if (!marquee) return <Loading />;
+export default function Marquee(texts) {
+  console.log(texts);
+  if (!texts) return <Loading />;
 
   return (
     <div className='relative flex overflow-x-hidden'>
@@ -17,11 +12,11 @@ export default function Marquee() {
         md:text-7xl md:py-10
         lg:text-10xl'
       >
-        <span className='mx-4'>{marquee.Text1}</span>
+        <span className='mx-4'>{texts.texts.Text1}</span>
         <span className='mx-4 text-blue'>/</span>
-        <span className='mx-4'>{marquee.Text2}</span>
+        <span className='mx-4'>{texts.texts.Text2}</span>
         <span className='mx-4 text-blue'>/</span>
-        <span className='mx-4'>{marquee.Text3}</span>
+        <span className='mx-4'>{texts.texts.Text3}</span>
         <span className='mx-4 text-blue'>/</span>
       </div>
 
@@ -30,11 +25,11 @@ export default function Marquee() {
         md:text-7xl md:py-10
         lg:text-10xl'
       >
-        <span className='mx-4'>{marquee.Text1}</span>
+        <span className='mx-4'>{texts.texts.Text1}</span>
         <span className='mx-4 text-blue'>/</span>
-        <span className='mx-4'>{marquee.Text2}</span>
+        <span className='mx-4'>{texts.texts.Text2}</span>
         <span className='mx-4 text-blue'>/</span>
-        <span className='mx-4'>{marquee.Text3}</span>
+        <span className='mx-4'>{texts.texts.Text3}</span>
         <span className='mx-4 text-blue'>/</span>
       </div>
     </div>

@@ -50,7 +50,7 @@ export default function ServicesAbout({ about, servicesAbout }) {
 
           <div
             className='w-full max-w-full ml-auto row-start-1 row-end-3 col-start-2 col-end-3
-          xl:mt-[156px]
+          xl:mt-[56px]
           md:pb-2.5 md:w-1/2
           xl:w-[400px]'
           >

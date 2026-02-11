@@ -16,7 +16,7 @@ export const revalidate = 60;
 const DEFAULT_LOCALE = "ru";
 
 async function getHomeData(locale = DEFAULT_LOCALE) {
-  const [headerRes, contactRes, menuRes, projectsRes, servicesRes, servicesAboutRes, aboutRes, blogRes, globalRes] =
+  const [headerRes, contactRes, menuRes, projectsRes, servicesRes, servicesAboutRes, aboutRes, blogRes, globalRes, globalMarquee] =
     await Promise.all([
       fetchAPI("/navigation/render/2", {
         fields: ["title", "path"],
@@ -93,6 +93,10 @@ async function getHomeData(locale = DEFAULT_LOCALE) {
         populate: ["defaultSeo"],
         locale,
       }),
+      fetchAPI("/global", {
+        populate: ["Marquee"],
+        locale,
+      }),
     ]);
 
   return {
@@ -102,6 +106,7 @@ async function getHomeData(locale = DEFAULT_LOCALE) {
     about: aboutRes?.data ?? null,
     blogs: blogRes?.data ?? [],
     global: globalRes?.data ?? null,
+    globalMarquee: globalMarquee?.data.attributes.Marquee ?? null,
     data: contactRes?.data ?? null,
     menu: menuRes ?? null,
     headerMenu: headerRes ?? null,
@@ -114,13 +119,15 @@ export async function generateMetadata() {
 }
 
 export default async function HomePage() {
-  const { projects, services, servicesAbout, about, blogs, global, data, menu, headerMenu } = await getHomeData(DEFAULT_LOCALE);
+  const { projects, services, servicesAbout, about, blogs, global, globalMarquee, data, menu, headerMenu } =
+    await getHomeData(DEFAULT_LOCALE);
 
   // If you still need the seo object for something else inside Layout/components, keep it:
   // const seo = {
   //   metaTitle: global?.attributes?.defaultSeo?.metaTitle,
   //   metaDescription: global?.attributes?.defaultSeo?.metaDescription,
   // };
+  //console.log(globalMarquee);
 
   return (
     <Layout
@@ -139,7 +146,7 @@ export default async function HomePage() {
         <ServicesListHome services={services} />
 
         <Wrapper color='grey' position='top'>
-          <ProjectsListForMain projects={projects} moreProjects={true} />
+          <ProjectsListForMain projects={projects} moreProjects={true} marqueeData={globalMarquee} />
         </Wrapper>
 
         <BlogsBlockList articleColor='nero' titleColor='white' buttonColor='white' blogRes={blogs} />
