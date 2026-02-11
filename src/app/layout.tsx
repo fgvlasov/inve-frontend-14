@@ -19,6 +19,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang='ru'>
+      <head>
+        <link rel='shortcut icon' href='/favicon.ico' type='image/x-icon' />
+        <meta name='yandex-verification' content='4e608efa98929572' />
+      </head>
       <body>
         <Suspense fallback={null}>
           <Providers global={global?.attributes}>{children}</Providers>
