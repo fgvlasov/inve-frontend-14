@@ -16,7 +16,7 @@ jobs:
           key: ${{ secrets.PROD_SSH_KEY }}
           script: |
             set -e
-            cd ${{ secrets.PROD_PATH }}
+            cd ${{ vars.PROD_PATH }}
             git fetch --all
             git reset --hard origin/master
             npm ci
