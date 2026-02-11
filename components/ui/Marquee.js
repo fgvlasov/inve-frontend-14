@@ -2,7 +2,7 @@
 import Loading from "./Loading";
 
 export default function Marquee(texts) {
-  console.log(texts);
+  //console.log(texts);
   if (!texts) return <Loading />;
 
   return (

@@ -19,7 +19,7 @@ jobs:
             cd ${{ vars.PROD_PATH }}
             git fetch --all
             git reset --hard origin/master
-            npm ci
+            npm install
             npm run build
             pm2 start ecosystem.config.js --only invert-frontend || true
             pm2 reload invert-frontend
