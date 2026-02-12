@@ -8,15 +8,12 @@ import ProjectItemCarousel from "./ProjectItemCarousel";
 import { getStrapiMedia } from "@/lib/media";
 import Tag from "../ui/Tag";
 import Loading from "../ui/Loading";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Swiper styles можно оставить импортом здесь (client) — ок
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-// ✅ Swiper только на клиенте
-const Swiper = dynamic(() => import("swiper/react").then((m) => m.Swiper), { ssr: false });
-const SwiperSlide = dynamic(() => import("swiper/react").then((m) => m.SwiperSlide), { ssr: false });
 
 type TagType = {
   id: number;
