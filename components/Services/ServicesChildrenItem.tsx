@@ -12,15 +12,15 @@ type Props = {
 export default function ServicesChildrenItem({ title, image, pathCategory, pathDirection = "" }: Props) {
   const linkDirection =
     pathDirection !== "" ? `/brief?categoryId=${pathCategory}&directionId=${pathDirection}` : `/brief?categoryId=${pathCategory}`;
-
+  const src = getStrapiMedia(image);
   return (
     <div className='bg-white pt-9 rounded-5xl relative w-full xl:shrink flex flex-col justify-between'>
       <div className='text-3xl px-9 pb-12'>{title}</div>
 
-      {image ? (
+      {src ? (
         <img
           className='rounded-b-5xl w-full md:aspect-[562/313]'
-          src={getStrapiMedia(image)}
+          src={src}
           width={398}
           height={313}
           alt={title || "Service"}
