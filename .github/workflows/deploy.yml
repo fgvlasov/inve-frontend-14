@@ -7,13 +7,17 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
+        env:
+          STRAPI_URL: ${{ vars.STRAPI_URL }}
         with:
           host: ${{ secrets.PROD_HOST }}
           username: ${{ secrets.PROD_USER }}
           key: ${{ secrets.PROD_SSH_KEY }}
+          envs: STRAPI_URL
           script: |
             set -e
             cd ${{ vars.PROD_PATH }}
