@@ -10,7 +10,7 @@ import Script from "next/script";
 export default function Providers({ children, global }) {
   // global here is global.attributes from Strapi (or undefined/null)
   const siteKey = global?.CAPTCHA_SITE_KEY;
-  console.log(siteKey);
+  //console.log(siteKey);
 
   return (
     <YandexMetrica>

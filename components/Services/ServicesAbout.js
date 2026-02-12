@@ -166,7 +166,7 @@ export default function ServicesAbout({ about, servicesAbout }) {
         loop={true}
         muted={true}
         poster='/image/videohive_poster.webp'
-        className='absolute -z-100 inset-0 object-cover !h-full bg-black w-full'
+        className='absolute -z-100 inset-0 object-cover !h-full bg-black w-full z-2'
       />
 
       {/*<BackgroundPlayer
