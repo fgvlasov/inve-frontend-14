@@ -40,7 +40,7 @@ export async function getGlobal(locale = "ru") {
  */
 export function buildMetadata(
   pageSeo: PageSeo | null | undefined,
-  globalAttributes: GlobalAttributes | null | undefined
+  globalAttributes: GlobalAttributes | null | undefined,
 ): Metadata {
   const defaultSeo = globalAttributes?.defaultSeo ?? null;
   const siteName = globalAttributes?.siteName ?? DEFAULT_SITE_NAME;
@@ -51,20 +51,14 @@ export function buildMetadata(
     shareImage: pageSeo?.shareImage ?? defaultSeo?.shareImage ?? null,
   };
 
-  const title =
-    merged.metaTitle ?
-      `${merged.metaTitle} | ${siteName}`
-    : `${DEFAULT_SITE_NAME}`;
+  const title = merged.metaTitle ? `${merged.metaTitle} | ${siteName}` : `${DEFAULT_SITE_NAME}`;
 
   const description = merged.metaDescription ?? "";
 
   let imageUrl: string | undefined;
-  try {
-    if (merged.shareImage && typeof merged.shareImage === "object" && "data" in (merged.shareImage as object)) {
-      imageUrl = getStrapiMedia(merged.shareImage as { data: { attributes: { url: string } } });
-    }
-  } catch {
-    imageUrl = undefined;
+
+  if (merged.shareImage && typeof merged.shareImage === "object") {
+    imageUrl = getStrapiMedia(merged.shareImage) ?? undefined;
   }
 
   const metadata: Metadata = {
