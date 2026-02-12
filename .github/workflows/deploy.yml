@@ -13,11 +13,12 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         env:
           STRAPI_URL: ${{ vars.STRAPI_URL }}
+          NEXT_PUBLIC_STRAPI_URL: ${{ vars.NEXT_PUBLIC_STRAPI_URL }}
         with:
           host: ${{ secrets.PROD_HOST }}
           username: ${{ secrets.PROD_USER }}
           key: ${{ secrets.PROD_SSH_KEY }}
-          envs: STRAPI_URL
+          envs: STRAPI_URL,NEXT_PUBLIC_STRAPI_URL
           script: |
             set -e
             cd ${{ vars.PROD_PATH }}
@@ -26,5 +27,5 @@ jobs:
             npm ci
             npm run build
             pm2 start ecosystem.config.js --only invert-frontend || true
-            pm2 reload invert-frontend
+            pm2 restart invert-frontend --update-env
             pm2 save

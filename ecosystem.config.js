@@ -10,6 +10,7 @@ module.exports = {
         NODE_ENV: "production",
         PORT: 3001,
         STRAPI_URL: "https://inv-admin.ptzsite.ru",
+        NEXT_PUBLIC_STRAPI_URL: "https://inv-admin.ptzsite.ru",
       },
       autorestart: true,
       max_restarts: 10,
