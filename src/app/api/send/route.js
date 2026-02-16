@@ -12,6 +12,8 @@ export async function POST(request) {
   }
 }
 
+export const runtime = "nodejs";
+
 export async function GET() {
   return NextResponse.json({ message: "Method Not Allowed" }, { status: 405 });
 }
