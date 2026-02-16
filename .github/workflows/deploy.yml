@@ -14,16 +14,26 @@ jobs:
         env:
           STRAPI_URL: ${{ vars.STRAPI_URL }}
           NEXT_PUBLIC_STRAPI_URL: ${{ vars.NEXT_PUBLIC_STRAPI_URL }}
+          NEXT_EMAIL: ${{ vars.NEXT_EMAIL }}
+          NEXT_EMAIL_PASS: ${{ secrets.NEXT_EMAIL_PASS }}
         with:
           host: ${{ secrets.PROD_HOST }}
           username: ${{ secrets.PROD_USER }}
           key: ${{ secrets.PROD_SSH_KEY }}
-          envs: STRAPI_URL,NEXT_PUBLIC_STRAPI_URL
+          envs: STRAPI_URL,NEXT_PUBLIC_STRAPI_URL,NEXT_EMAIL,NEXT_EMAIL_PASS
           script: |
             set -e
             cd ${{ vars.PROD_PATH }}
             git fetch --all
             git reset --hard origin/master
+
+            cat > .env.production <<EOF
+            STRAPI_URL=$STRAPI_URL
+            NEXT_PUBLIC_STRAPI_URL=$NEXT_PUBLIC_STRAPI_URL
+            NEXT_EMAIL=$NEXT_EMAIL
+            NEXT_EMAIL_PASS=$NEXT_EMAIL_PASS
+            EOF
+
             npm ci
             npm run build
             pm2 start ecosystem.config.js --only invert-frontend || true

@@ -109,7 +109,7 @@ export const FormOrder = ({ onSubmitForm }) => {
             </ModalFieldset>
 
             <ModalFieldset width='w-full'>
-              <ModalLabel htmlFor='email' text='E-mail' align='text-left' required={false} />
+              <ModalLabel htmlFor='email' text='E-mail' align='text-left' required={true} />
               <ModalInputForBrief
                 type='email'
                 id='email'

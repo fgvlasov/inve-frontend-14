@@ -13,17 +13,17 @@ export const CreateEmail = async (data) => {
   <body >
   	<h1>${sendForm.emailTitle}</h1>
     ${Object.entries(emailData)
-    .filter(([key, value]) => value)
-    .map(([key, value]) =>
-      key === "categories"
-        ? `<p>
+      .filter(([key, value]) => value)
+      .map(([key, value]) =>
+        key === "categories"
+          ? `<p>
                 ${`${sendForm[key]}`}: <span>${value.attributes.name}</span>
               </p>`
-        : `<p>
+          : `<p>
                 ${`${sendForm[key]}`}: <span>${value}</span>
-              </p>`
-    )
-    .join("")}
+              </p>`,
+      )
+      .join("")}
 
   </body>
   `;
