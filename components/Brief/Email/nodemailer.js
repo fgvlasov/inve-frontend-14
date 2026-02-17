@@ -17,20 +17,23 @@ export const transporter = nodemailer.createTransport({
 });
 
 export const SendMail = async (data) => {
-  const response = await fetchAPI("/global", {
-    fields: ["Email_forms"],
-  });
-
-  // если data уже объект — не парсь
   const payload = typeof data === "string" ? JSON.parse(data) : data;
+
+  const response = await fetchAPI("/global", { fields: ["Email_forms"] });
+  const to = response?.data?.attributes?.Email_forms;
+
+  if (!to) {
+    throw new Error("Recipient email is missing (Email_forms) in Strapi global settings");
+  }
+
   const formName = payload?.formName || "Form enquiry";
 
-  const emailHtml = await CreateEmail(data);
+  const emailHtml = await CreateEmail(payload);
 
   const result = await transporter.sendMail({
     from: user,
     subject: formName,
-    to: response?.data?.attributes?.Email_forms,
+    to,
     html: emailHtml,
   });
 
