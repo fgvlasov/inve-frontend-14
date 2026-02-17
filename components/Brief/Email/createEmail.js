@@ -1,23 +1,43 @@
 import loadNamespaces from "next-translate/loadNamespaces";
 
+const FALLBACK_SEND_FORM = {
+  emailTitle: "Новая заявка",
+  formName: "Форма",
+  name: "Имя",
+  phone: "Телефон",
+  email: "Email",
+  message: "Сообщение",
+  categories: "Категория",
+  // добавь сюда ключи, которые реально шлёшь
+};
+
 export const CreateEmail = async (data) => {
-  // 1) Нормализуем вход (строка JSON или объект)
   const payload = typeof data === "string" ? JSON.parse(data) : data;
 
-  // 2) Подтягиваем переводы
-  const {
-    __namespaces: {
-      common: { sendForm },
-    },
-  } = await loadNamespaces({ locale: "ru", pathname: "/common" });
+  // Пытаемся получить переводы, но не ломаемся если не получилось
+  let sendForm = FALLBACK_SEND_FORM;
 
-  // 3) Собираем строки полей
+  try {
+    const ns = await loadNamespaces({ locale: "ru", pathname: "/common" });
+
+    // next-translate может отдавать разные формы; безопасно достаём
+    const fromNs =
+      ns?.__namespaces?.common?.sendForm ||
+      ns?.__namespaces?.["common"]?.sendForm ||
+      ns?.sendForm || // иногда кладут прямо
+      null;
+
+    if (fromNs && typeof fromNs === "object") sendForm = { ...FALLBACK_SEND_FORM, ...fromNs };
+  } catch (e) {
+    // оставляем fallback
+    console.log("[CreateEmail] loadNamespaces failed, using fallback:", e?.message || e);
+  }
+
   const rows = Object.entries(payload || {})
     .filter(([_, value]) => value !== undefined && value !== null && value !== "")
     .map(([key, value]) => {
       const label = sendForm?.[key] ?? key;
 
-      // Спец-обработка categories (бывает объект, массив, strapi-объект и т.д.)
       if (key === "categories") {
         const name =
           value?.attributes?.name ??
@@ -37,34 +57,21 @@ export const CreateEmail = async (data) => {
           (typeof value === "string" ? value : null) ??
           "";
 
-        return `
-          <p>
-            ${escapeHtml(String(label))}: <span>${escapeHtml(String(name))}</span>
-          </p>
-        `;
+        return `<p>${escapeHtml(label)}: <span>${escapeHtml(String(name))}</span></p>`;
       }
 
-      // Обычные поля
-      return `
-        <p>
-          ${escapeHtml(String(label))}: <span>${escapeHtml(String(value))}</span>
-        </p>
-      `;
+      return `<p>${escapeHtml(label)}: <span>${escapeHtml(String(value))}</span></p>`;
     })
     .join("");
 
-  // 4) Собираем письмо
-  const email = `
+  return `
     <body>
-      <h1>${escapeHtml(String(sendForm?.emailTitle ?? "New form submission"))}</h1>
+      <h1>${escapeHtml(sendForm.emailTitle || "New form submission")}</h1>
       ${rows}
     </body>
   `;
-
-  return email;
 };
 
-// Простое экранирование HTML (чтобы значения не ломали письмо и не вставляли теги)
 function escapeHtml(str) {
   return String(str)
     .replaceAll("&", "&amp;")
