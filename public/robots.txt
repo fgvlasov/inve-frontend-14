@@ -2,6 +2,8 @@ User-agent: *
 Disallow: /en/
 Disallow: /?action
 Disallow: /?etext=
+Disallow: /*?*ysclid=
+Disallow: /*&*ysclid=
 Disallow: /nubex.webm
 Disallow: /userfiles/
 Disallow: /VR/
