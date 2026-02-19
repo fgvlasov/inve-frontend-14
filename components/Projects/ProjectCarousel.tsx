@@ -29,9 +29,7 @@ export default function ProjectCarousel({ photos, videoFiles, poster, rtVideos =
         <SwiperVideo2 videoSlides={rtVideos} />
       ) : hasVideoFiles ? (
         <SwiperVideo videoSlides={videoFiles!.data} poster={poster} />
-      ) : (
-        <div>Ничего не найдено</div>
-      )}
+      ) : null}
     </div>
   );
 }

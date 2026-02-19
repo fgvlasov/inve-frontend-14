@@ -55,3 +55,17 @@ body {
 header.text-black-russian nav ul > li a {
   color: #1c1d21;
 }
+
+.iframeCrop {
+  position: relative;
+  overflow: hidden;
+  height: 700px;
+}
+
+/* Находим iframe внутри и “сдвигаем” его вверх,
+   а высоту увеличиваем, чтобы снизу тоже обрезалось */
+.iframeCrop iframe {
+  display: block;
+  position: relative;
+  top: -55px;
+}

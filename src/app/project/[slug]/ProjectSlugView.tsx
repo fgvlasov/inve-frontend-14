@@ -35,6 +35,8 @@ interface ProjectSlugViewProps {
 
 export default function ProjectSlugView({ project, projectsOther, data, menu, headerMenu }: ProjectSlugViewProps) {
   const attrs = project?.attributes ?? {};
+  //console.log(projectsOther);
+
   const tags: any[] = (attrs.tags ?? []) as any[];
 
   const breadCrumbsItems = [{ title: "Портфолио", path: "/portfolio" }, { title: (attrs.Title ?? "") as string }];
@@ -58,41 +60,36 @@ export default function ProjectSlugView({ project, projectsOther, data, menu, he
     >
       <TitleSection text={(attrs.Title ?? "") as string}> </TitleSection>
       {tags.length > 0 && <TagBlock tags={tags} />}
-
       <div className='container'>
         <Line variantColor='grey' />
       </div>
-
       <BreadCrumbs links={breadCrumbsItems} />
-
-      <ProjectCarousel photos={photos} poster={attrs.Poster} videoFiles={videoFiles} rtVideos={rtVideos} />
-
-      <ProjectAbout
-        task={(attrs.ProjectTask ?? "") as string}
-        done={(attrs.ProjectDone ?? "") as string}
-        CustomerName={(attrs.CustomerName ?? "") as string}
-        CustomerUrl={(attrs.CustomerUrl ?? "") as string}
-      />
-
+      {photos && <ProjectCarousel photos={photos} poster={attrs.Poster} videoFiles={videoFiles} rtVideos={rtVideos} />}
+      {attrs.Iframe_mod ? (
+        <div className='container iframeCrop'>
+          <div dangerouslySetInnerHTML={{ __html: attrs.Iframe_mod }} />
+        </div>
+      ) : null}
+      {attrs.ProjectTask && (
+        <ProjectAbout
+          task={(attrs.ProjectTask ?? "") as string}
+          done={(attrs.ProjectDone ?? "") as string}
+          CustomerName={(attrs.CustomerName ?? "") as string}
+          CustomerUrl={(attrs.CustomerUrl ?? "") as string}
+        />
+      )}
       <div className='container'>
         <Line variantColor='grey' />
       </div>
-
       <div className='py-10 md:py-15 lg:py-18'>
         <IntroCost />
       </div>
 
-      <PortfolioCarousel title='Другие проекты' projects={projectsOther as any} />
+      {projectsOther && <PortfolioCarousel title='Другие проекты' projects={projectsOther as any} />}
 
       <div className='container'>
         <Line variantColor='grey' />
       </div>
-
-      {attrs.Iframe_mod ? (
-        <div className='container hidden'>
-          <div dangerouslySetInnerHTML={{ __html: attrs.Iframe_mod }} />
-        </div>
-      ) : null}
     </Layout>
   );
 }
