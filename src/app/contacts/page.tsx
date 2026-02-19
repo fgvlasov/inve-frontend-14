@@ -3,12 +3,12 @@ import TitleSection from "@/components/ui/TitleSection";
 import BreadCrumbs from "@/components/ui/Breadcrumbs";
 import { fetchAPI } from "@/lib/api";
 import ServicesSlides from "@/components/Services/ServicesSlides";
-import Map from "@/components/ui/Map";
 import IntroCost from "@/components/ui/IntroCost";
 import BlogsBlockList from "@/components/Blogs/BlogsBlockList";
 import Address from "@/components/ui/Address";
 import Line from "@/components/ui/Line";
 import { getGlobal, buildMetadata } from "@/lib/metadata";
+import MapClient from "@/components/ui/MapClient";
 
 const DEFAULT_LOCALE = "ru";
 
@@ -99,7 +99,7 @@ export default async function ContactsPage() {
         <ServicesSlides slides={slides} />
       </div>
 
-      <Map />
+      <MapClient height='64vh' constructorHeightPx={600} className='pb-12 md:pt-[58px]' />
       <IntroCost />
       <BlogsBlockList articleColor='inherit' titleColor='black' buttonColor='black' blogRes={blogs} />
       <div className='container'>
