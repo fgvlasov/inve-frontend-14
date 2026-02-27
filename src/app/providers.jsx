@@ -16,13 +16,13 @@ export default function Providers({ children, global }) {
     <YandexMetrica>
       <NextIntlClientProvider locale='ru' messages={messages} timeZone='Europe/Moscow'>
         <ToastrProvider>
-          <Script src='//cdn.callibri.ru/callibri.js' type='text/javascript' strategy='beforeInteractive' />
+          <Script src='//cdn.callibri.ru/callibri.js' type='text/javascript' strategy='lazyOnload' />
           {siteKey ? (
             <GoogleReCaptchaProvider
               reCaptchaKey={siteKey}
               scriptProps={{
-                async: false,
-                defer: false,
+                async: true,
+                defer: true,
                 appendTo: "head",
                 nonce: undefined,
               }}
