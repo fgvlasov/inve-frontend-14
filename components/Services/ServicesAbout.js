@@ -161,27 +161,16 @@ export default function ServicesAbout({ about, servicesAbout }) {
 
       <video
         id='video-player'
-        src={getStrapiMedia(about.attributes.Video)}
+        src='/video_bg.mp4'
         autoPlay={true}
+        playsInline={true}
         loop={true}
         muted={true}
         poster='/image/videohive_poster.webp'
         className='absolute -z-100 inset-0 object-cover !h-full bg-black w-full z-2'
-      />
-
-      {/*<BackgroundPlayer
-        src={getStrapiMedia(about.attributes.Video)}
-        width="100%"
-        height="100%"
-        autoPlay
-        loop
-        muted
-        poster="/image/videohive_poster.webp"
-        className="absolute -z-100 inset-0 object-cover !h-full bg-black"
       >
-        <source src={getStrapiMedia(about.attributes.Video)} type="video/mp4" />
-        <source src={getStrapiMedia(about.attributes.Video)} type="video/ogg" />
-      </BackgroundPlayer>*/}
+        <source src='/video_bg.mp4' type='video/mp4' />
+      </video>
     </div>
   );
 }
