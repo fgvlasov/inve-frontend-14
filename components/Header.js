@@ -30,7 +30,7 @@ export default function Header({ variant, variantSvg, menu, contactData }) {
   const headerClass = variant === "black" ? "bg-black text-white" : "bg-whisper text-black-russian";
 
   return (
-    <header className={`${headerClass} relative text-inherit`}>
+    <header className={`${headerClass} relative class555 text-inherit`}>
       <div
         className='container contPadding  flex justify-between items-center  
       pt-5 flex-wrap pb-5 md:py-[17px]
